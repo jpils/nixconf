@@ -13,13 +13,12 @@ in {
 		swww
 		bibata-cursors
 		hyprshot
-		libsForQt5.xwaylandvideobridge
+		kdePackages.xwaylandvideobridge
 	];
 
 	wayland.windowManager.hyprland = {
 		enable = true;
-		package = null; #inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-		portalPackage = null;
+		package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 
 		settings = {
 
@@ -116,26 +115,10 @@ in {
 				};
 			};
 
-			gestures = {
-				workspace_swipe = false;
+			device = {
+				name = "epic-mouse-v1";
+				sensitivity = -0.5;
 			};
-
-			device = [
-				{
-					name = "epic-mouse-v1";
-					sensitivity = -0.5;
-				}
-				{
-					name = "zsa-technology-labs-moonlander-mark-i";
-					kb_layout = "us";
-					kb_variant = "dvorak";
-				}
-				{
-					name = "zsa-technology-labs-moonlander-mark-i-keyboard";
-					kb_layout = "us";
-					kb_variant = "";
-				}
-			];
 
 
 			"$super" = "SUPER"; 

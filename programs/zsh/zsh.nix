@@ -37,6 +37,7 @@
 			alias l="ls --color=auto -lh"
 			alias la="ls --color=auto -lah"
 			#alias jukit_kitty="kitty --listen-on=unix:@"$(date +%s%N)" -o allow_remote_control=yes"
+			alias remote1="sshfs jpils000@login.leonardo.cineca.it:/leonardo_scratch/fast/L-AUT_023/STO_twinned/production_active_learning remote1"
 			alias tn="tmux-new"
 			alias ts="tmux new -s"
 			alias cd="z"

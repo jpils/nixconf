@@ -43,11 +43,13 @@
 		picom
 		qalculate-gtk
 		ripgrep
+		loupe
 		rofi
 		sshfs
 		starship
 		step-cli	
 		texliveFull
+		inkscape
 		networkmanagerapplet
 		teams-for-linux
 		telegram-desktop
@@ -65,6 +67,7 @@
 		# fonts
 		nerd-fonts.symbols-only
 		iosevka
+		kdePackages.dolphin
 	];
 
 	fonts = {
