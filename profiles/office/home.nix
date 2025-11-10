@@ -29,31 +29,40 @@ in
 		beeper
 		blueman
 		brightnessctl
+		btop
+		conda
+		discord
 		dmenu
 		dunst
 		fd
 		firefox
+		libreoffice-qt
 		fzf
 		gdb
 		gnuplot
-		btop
+		inkscape
+		jellyfin-ffmpeg
+		jmol
+		kdePackages.dolphin
+		kdePackages.qtsvg
 		kitty
+		lima
 		loupe
 		notify
 		ovito
-		jmol
 		pavucontrol
 		picom
+		python313
 		qalculate-gtk
 		ripgrep
 		rofi
 		sshfs
-		step-cli
 		starship
-		texliveFull
+		step-cli
 		telegram-desktop
+		texliveFull
 		tree
-		discord
+		vlc
 		wl-clipboard
 		xournalpp
 		zathura
@@ -61,11 +70,6 @@ in
 		zoom-us
 		zotero
 		zoxide
-		inkscape
-
-		kdePackages.dolphin
-		kdePackages.qtsvg
-
 # fonts
 		nerd-fonts.symbols-only
 		iosevka
