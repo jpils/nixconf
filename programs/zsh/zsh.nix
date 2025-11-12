@@ -53,6 +53,7 @@
 				--color='dark,fg:blue'"
 			alias run-vm="/home/jay/.VM/run-vm.sh"
 			alias leonardo="source ~/.dotfiles/leonardo.sh"
+			alias univie='nmcli connection up id "univie" --ask'
 			alias gdb="gdb -q"
 
 			export FZF_DEFAULT_OPTS=" \
