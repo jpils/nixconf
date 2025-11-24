@@ -175,6 +175,8 @@ in {
 	hardware.keyboard.zsa.enable = true;
 
 	environment.systemPackages = with pkgs; [ 
+		pulseaudio
+		pavucontrol
 		alsa-utils
 		auto-cpufreq
 		blueman

@@ -30,6 +30,7 @@
 						nativeBuildInputs = with pkgs; [
 							pkg-config 
 							cmake
+							clang
 							eigen
 							ninja
 						];
@@ -42,6 +43,8 @@
 						];
 
 						shellHook = ''
+							export CC=clang
+							export CXX=clang++
 							export CMAKE_EXPORT_COMPILE_COMMANDS=ON
 						'';
 					};

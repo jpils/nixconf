@@ -32,6 +32,7 @@
 		fzf
 		gdb
 		gnuplot
+		geary
 		htop
 		kitty
 		ovito

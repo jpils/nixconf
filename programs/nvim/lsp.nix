@@ -56,8 +56,8 @@
 					'--compile-commands-dir=build',
 					'--query-driver=/nix/store/*/bin/*',
 				},
-				root_markers = { 'compile_commands.json', 'compile_flags.txt', '.git' },
-				filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+				root_markers = { 'compile_commands.json', 'compile_flags.txt', '.git', '.jj' },
+				filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'hpp', 'cppm', 'h' },
 			})
 
 			vim.lsp.config('pyright', {
