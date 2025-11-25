@@ -41,6 +41,7 @@
 		jmol
 		lima
 		pavucontrol
+		pdfpc
 		picom
 		qalculate-gtk
 		ripgrep

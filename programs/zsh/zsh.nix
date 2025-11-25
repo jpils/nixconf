@@ -55,6 +55,7 @@
 			alias leonardo="source ~/.dotfiles/leonardo.sh"
 			alias univie='nmcli connection up id "univie" --ask'
 			alias gdb="gdb -q"
+			alias pdfpc="env GDK_BACKEND=x11 pdfpc"
 
 			export FZF_DEFAULT_OPTS=" \
 			--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
