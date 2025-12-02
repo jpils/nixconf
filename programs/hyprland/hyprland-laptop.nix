@@ -27,8 +27,9 @@ in {
 			];
 
 			monitor = [
-				"eDP-1, preferred, 0x0, 1"
-				", preferred, auto, 1, mirror, eDP-1"
+				"eDP-1,1920x1200@60,0x0,1"
+				#"eDP-1,1920x1080@60,0x0,1"
+				"HDMI-A-1,1920x1080@60,0x0,1,mirror,eDP-1"
 			];
 
 			"$terminal" = "kitty";
@@ -51,6 +52,12 @@ in {
 
 				layout = "dwindle";
 			};
+
+			render = {
+				direct_scanout = 0;   # direct scanout often conflicts with screencopy
+			  };
+
+			cursor.no_hardware_cursors = true;
 
 			decoration = {
 				rounding = 10;
@@ -99,7 +106,8 @@ in {
 
 			misc = { 
 				disable_hyprland_logo = true;
-				vrr = 2;
+				vrr = 0;
+				vfr = false;
 			};
 
 			input = {

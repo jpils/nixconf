@@ -39,6 +39,7 @@
 		xfce.thunar
 		notify
 		jmol
+		libreoffice-qt
 		lima
 		pavucontrol
 		pdfpc

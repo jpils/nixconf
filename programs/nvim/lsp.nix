@@ -5,6 +5,7 @@
 		clang-tools
 		pyright
 		nil
+		rust-analyzer
 		texlab
 	];
 
@@ -74,9 +75,24 @@
 
 			vim.lsp.config('texlab', {})
 
+			vim.lsp.config('rust_analyzer', {
+			  on_attach = on_attach,
+			  capabilities = capabilities,
+			  root_markers = { 'Cargo.toml', 'rust-project.json', 'rust-toolchain.toml', '.git', '.jj' },
+			  settings = {
+				["rust-analyzer"] = {
+				  cargo = { allFeatures = true },
+				  checkOnSave = true,
+				  check = { command = "clippy" },
+				  procMacro = { enable = true },
+				},
+			  },
+			})
+
 			vim.lsp.enable('clangd')
 			vim.lsp.enable('pyright')
 			vim.lsp.enable('texlab')
+			vim.lsp.enable('rust_analyzer')
 
 			local cmp = require('cmp')
 			local cmp_select = { behavior = cmp.SelectBehavior.Select }
