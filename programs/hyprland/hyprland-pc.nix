@@ -27,7 +27,7 @@ in {
 			];
 
 			monitor = [
-				", preferred, auto, 1"
+				", 2560x1440@165, auto, 1"
 			];
 
 			"$terminal" = "kitty";
