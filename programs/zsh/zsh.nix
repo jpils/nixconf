@@ -104,6 +104,16 @@
 				zle reset-prompt
 			}
 
+			function zle-keymap-select {
+			case $KEYMAP in
+			vicmd)      print -n -- $'\e[2 q' ;;  # block cursor
+			viins|main) print -n -- $'\e[6 q' ;;  # bar cursor
+			esac
+			}
+			zle -N zle-keymap-select
+			function zle-line-init { zle-keymap-select }
+			zle -N zle-line-init
+
 			zle -N find-directories-widget
 			zle -N find-hidden-directories-widget
 			zle -N find-command-hist-widget
@@ -111,7 +121,6 @@
 
 			bindkey '^t' find-directories-widget
 			bindkey '^h' find-hidden-directories-widget
-			bindkey '^s' find-all-directories-widget
 			bindkey '^r' find-command-hist-widget
 			bindkey '^f' find-file-widget
 
@@ -140,5 +149,3 @@
 		nix-direnv.enable = true;
 	};
 }
-
-
