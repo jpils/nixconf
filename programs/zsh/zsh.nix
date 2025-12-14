@@ -7,8 +7,8 @@
 		initContent = /*bash*/''
 			# Lines configured by zsh-newuser-install
 			HISTFILE=~/.histfile
-			HISTSIZE=100000
-			SAVEHIST=100000
+			HISTSIZE=10000
+			SAVEHIST=10000
 
 			autoload -U compinit
 			zstyle ':completion:*' menu select
@@ -23,8 +23,6 @@
 			bindkey -M menuselect 'l' vi-forward-char
 			bindkey -M menuselect 'j' vi-down-line-or-history
 			export KEYTIMEOUT=20
-
-			export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 			if [ "$IS_PC" = "true" ]; then
 				export LD_LIBRARY_PATH="/run/opengl-driver/lib:$LD_LIBRARY_PATH"
@@ -90,11 +88,10 @@
 			}
 
 			find-command-hist-widget() {
-				local command
-				command=$(history | fzf-custom | awk '{$1=""; print $0}') || return
-				LBUFFER+="$command"
-				print -s -- "$command"
-				zle reset-prompt
+			  local cmd
+			  cmd=$(fc -rl 1 | fzf-custom | sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//') || return
+			  LBUFFER+="$cmd"
+			  zle reset-prompt
 			}
 
 			find-file-widget() {
