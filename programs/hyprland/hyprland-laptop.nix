@@ -1,10 +1,8 @@
 { pkgs, lib, inputs, ... }:
 
-let
-	wallpaper = ../../Wallpapers/Mountains-Nord.jpg;
+Let
+	wallpaper = ../../Wallpapers/mandelbrot.png;
 	startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-		swww init &
-		sleep 1
 		swww img ${wallpaper} &
 		waybar &
 	'';
@@ -15,6 +13,8 @@ in {
 		hyprshot
 		kdePackages.xwaylandvideobridge
 	];
+
+	services.swww.enable = true;
 
 	wayland.windowManager.hyprland = {
 		enable = true;
@@ -112,7 +112,8 @@ in {
 
 			input = {
 				kb_layout = "us";
-				kb_variant = "dvorak";
+				#kb_variant = "dvorak";
+				kb_variant = "";
 
 				follow_mouse = 1;
 
