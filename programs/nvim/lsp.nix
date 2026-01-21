@@ -7,6 +7,7 @@
 		nil
 		rust-analyzer
 		texlab
+		nixd
 	];
 
 	programs.neovim = {
@@ -93,6 +94,8 @@
 			vim.lsp.enable('pyright')
 			vim.lsp.enable('texlab')
 			vim.lsp.enable('rust_analyzer')
+			vim.lsp.enable('nil')
+			vim.lsp.enable('nixd')
 
 			local cmp = require('cmp')
 			local cmp_select = { behavior = cmp.SelectBehavior.Select }
