@@ -1,6 +1,6 @@
 { pkgs, lib, inputs, ... }:
 
-Let
+let
 	wallpaper = ../../Wallpapers/mandelbrot.png;
 	startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
 		swww img ${wallpaper} &
