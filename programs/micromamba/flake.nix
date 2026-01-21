@@ -12,7 +12,7 @@
       fhs = pkgs.buildFHSEnv {
         name = "fhs-shell";
         targetPkgs = pkgs: with pkgs; [
-          coreutils curl gcc jj wget zsh
+          coreutils curl gcc wget zsh
           micromamba glibc openssl stdenv.cc.cc
         ];
 
