@@ -1,10 +1,8 @@
-{ pkgs, lib, inputs, ... }:
+{pkgs, lib, inputs, ... }:
 
 let
-	wallpaper = ../../Wallpapers/Mountains-Nord.jpg;
+	wallpaper = ../../Wallpapers/mandelbrot.png;
 	startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-		swww init &
-		sleep 1
 		swww img ${wallpaper} &
 		waybar &
 	'';
@@ -13,8 +11,9 @@ in {
 		swww
 		bibata-cursors
 		hyprshot
-		kdePackages.xwaylandvideobridge
 	];
+
+	services.swww.enable = true;
 
 	wayland.windowManager.hyprland = {
 		enable = true;

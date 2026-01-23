@@ -11,7 +11,6 @@ in {
 		swww
 		bibata-cursors
 		hyprshot
-		kdePackages.xwaylandvideobridge
 	];
 
 	services.swww.enable = true;
