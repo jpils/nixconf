@@ -48,22 +48,6 @@ in {
 		};
 	};
 
-		#xdg.portal = {
-		#	enable = true;
-		#	config = {
-		#		sway = {
-		#			"org.freedesktop.impl.portal.Screenshot.PickColor" = [ "${pkgs.hyprpicker}/bin/hyprpicker" ];
-		#		};
-		#		common.default = "*";
-		#	};
-
-		#	# gtk portal needed to make gtk apps happy
-		#	extraPortals = [
-		#		xdg-desktop-portal-hyprland
-		#		pkgs.xdg-desktop-portal-gtk
-		#	];
-		#};
-
 	services.displayManager = {
 		enable = true;
 		autoLogin = {
@@ -112,6 +96,21 @@ in {
 				};
 			};
 		};
+	};
+
+	services.printing = {
+		enable = true;
+		drivers = with pkgs; [
+			gutenprint
+			gutenprintBin
+			cups-filters
+		]; 
+	};
+
+	services.avahi = {
+		enable = true;
+		nssmdns4 = true;
+		openFirewall = true;
 	};
 
 	# Configure keymap in X11 services.xserver.xkb.layout = "us";

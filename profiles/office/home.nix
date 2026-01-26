@@ -59,6 +59,7 @@ in
 		sshfs
 		starship
 		step-cli
+		system-config-printer
 		telegram-desktop
 		texliveFull
 		tree
