@@ -199,7 +199,7 @@ in {
 			];
 
 
-			windowrulev2 = [
+			windowrule = [
 				"suppressevent maximize, class:.*"
 				"workspace 1, class:(kitty)$, title:(kitty)$"
 				"workspace 2, initialTitle:(Mozilla Firefox)$"

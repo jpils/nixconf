@@ -1,20 +1,27 @@
-{ pkgs, lib, inputs, ... }:
+{pkgs, lib, inputs, ... }:
 
 let
 	wallpaper = ../../Wallpapers/mandelbrot.png;
-	startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-		swww img ${wallpaper} &
-		waybar &
-	'';
 in {
 	home.packages = with pkgs; [
 		swww
 		bibata-cursors
 		hyprshot
-		kdePackages.xwaylandvideobridge
 	];
-
+	services.hyprpaper.enable = lib.mkForce false;
 	services.swww.enable = true;
+	systemd.user.services.swww = {
+        Unit = {
+            After = [ "graphical-session.target" ];
+            PartOf = [ "graphical-session.target" ];
+        };
+        Service = {
+			Restart = lib.mkForce "on-failure";
+    
+			ExecStartPre = "${pkgs.bash}/bin/bash -c '${pkgs.coreutils}/bin/rm -rf %h/.cache/swww'";
+            ExecStartPost = "${pkgs.swww}/bin/swww img ${wallpaper}";
+        };
+    };
 
 	wayland.windowManager.hyprland = {
 		enable = true;
@@ -23,8 +30,8 @@ in {
 		settings = {
 
 			exec-once = [
-				"${startupScript}/bin/start"
-			];
+				"waybar"
+            ]; 
 
 			monitor = [
 				", preferred, auto, 1.2"
@@ -200,21 +207,22 @@ in {
 			];
 
 
-			windowrulev2 = [
-				"suppressevent maximize, class:.*"
-				"workspace 1, class:(kitty)$, title:(kitty)$"
-				"workspace 2, initialTitle:(Mozilla Firefox)$"
-				"workspace 5, class:(org.telegram.desktop)$, initialTitle:(Telegram)$"
-				"float, class:(org.telegram.desktop)$, initialTitle:^(?!.*Telegram*.)$"
-				"workspace 5, class:(whatsapp-for-linux)$"
-				"workspace 7, class:(webcord)$, title:(webcord)$"
-				"workspace 9, initialTitle:^(Spotify( Premium)?)$"
+			windowrule = [
+			  # Use the standard "class:" and "title:" selectors without the "match:" prefix
+			  "workspace 1, match:class ^(kitty)$"
+			  "workspace 2, match:initial_title ^(Mozilla Firefox)$"
+			  "workspace 5, match:class ^(org.telegram.desktop)$, match:initial_title ^(Telegram)$"
+			  "match:float yes, match:class ^(org.telegram.desktop)$, match:initial_title ^(?!.*Telegram*.)$"
+			  "workspace 5, match:class ^(whatsapp-for-linux)$"
+			  "workspace 6, match:class ^(discord)$, match:title ^(discord)$"
+			  "workspace 9, match:initial_title ^(Spotify( Premium)?)$"
 
-				"opacity 0.0 override, class:^(xwaylandvideobridge)$"
-				"noanim, class:^(xwaylandvideobridge)$"
-				"noinitialfocus, class:^(xwaylandvideobridge)$"
-				"maxsize 1 1, class:^(xwaylandvideobridge)$"
-				"noblur, class:^(xwaylandvideobridge)$"
+			  # Rules for XWayland Video Bridge
+			  "opacity 0.0 override, match:class ^xwaylandvideobridge$"
+			  "no_anim on, match:class ^xwaylandvideobridge$"
+			  "no_initial_focus on, match:class ^xwaylandvideobridge$"
+			  "max_size 1 1, match:class ^xwaylandvideobridge$"
+			  "no_blur on, match:class ^xwaylandvideobridge$"
 			];
 		};
 

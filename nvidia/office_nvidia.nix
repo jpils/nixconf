@@ -26,5 +26,4 @@
 	services.dbus.enable = true;
 
 	programs.coolercontrol.enable = true;
-	programs.coolercontrol.nvidiaSupport = true;
 }
