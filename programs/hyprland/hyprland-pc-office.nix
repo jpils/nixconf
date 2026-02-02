@@ -34,7 +34,7 @@ in {
             ]; 
 
 			monitor = [
-				", preferred, auto, 1.2"
+				", preferred, auto, 1.07"
 			];
 
 			"$terminal" = "kitty";
