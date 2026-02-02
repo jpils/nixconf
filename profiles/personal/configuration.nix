@@ -35,9 +35,7 @@ in {
 	# Enable the X11 windowing system.
 	services.xserver.enable = true;
 	services.displayManager.sddm.enable = true;
-	services.displayManager.sddm.wayland = {
-		enable = true;
-	};
+	services.displayManager.sddm.wayland.enable = true;
 
 	programs = {
 		hyprland = {
@@ -58,15 +56,6 @@ in {
 
 	environment.sessionVariables = {
 		NIXOS_OZONE_WL = "1";
-	};
-
-	services.tlp = {
-		enable = true;
-		settings = {
-			START_CHARGE_THRESH_BAT0 = 75;
-			STOP_CHARGE_THRESH_BAT0 = 80;
-
-		};
 	};
 
 	services.auto-cpufreq.enable = true; 

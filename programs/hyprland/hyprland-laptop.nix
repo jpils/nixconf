@@ -1,19 +1,32 @@
-{ pkgs, lib, inputs, ... }:
+{pkgs, lib, inputs, ... }:
 
 let
 	wallpaper = ../../Wallpapers/mandelbrot.png;
-	startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-		swww img ${wallpaper} &
-		waybar &
-	'';
 in {
+	imports = [
+		./hypridle.nix
+		./hyprlock.nix
+	];
+
 	home.packages = with pkgs; [
 		swww
 		bibata-cursors
 		hyprshot
 	];
-
+	services.hyprpaper.enable = lib.mkForce false;
 	services.swww.enable = true;
+	systemd.user.services.swww = {
+        Unit = {
+            After = [ "graphical-session.target" ];
+            PartOf = [ "graphical-session.target" ];
+        };
+        Service = {
+			Restart = lib.mkForce "on-failure";
+    
+			ExecStartPre = "${pkgs.bash}/bin/bash -c '${pkgs.coreutils}/bin/rm -rf %h/.cache/swww'";
+            ExecStartPost = "${pkgs.swww}/bin/swww img ${wallpaper}";
+        };
+    };
 
 	wayland.windowManager.hyprland = {
 		enable = true;
@@ -22,17 +35,15 @@ in {
 		settings = {
 
 			exec-once = [
-				"${startupScript}/bin/start"
-			];
+				"waybar"
+            ]; 
 
 			monitor = [
-				"eDP-1,1920x1200@60,0x0,1"
-				#"eDP-1,1920x1080@60,0x0,1"
-				"HDMI-A-1,1920x1080@60,0x0,1,mirror,eDP-1"
+				", preferred, auto, 1.0"
 			];
 
 			"$terminal" = "kitty";
-			"$filebrowser" = "thunar";
+			"$filebrowser" = "dolphin";
 
 			env = [
 				"QT_QPA_PLATFORM,wayland"
@@ -111,8 +122,8 @@ in {
 
 			input = {
 				kb_layout = "us";
-				#kb_variant = "dvorak";
-				kb_variant = "";
+				kb_variant = "dvorak";
+				#kb_variant = "";
 
 				follow_mouse = 1;
 
@@ -208,22 +219,22 @@ in {
 				", XF86AudioNext, exec, playerctl next"
 			];
 
+			windowrule = [
+			  # Use the standard "class:" and "title:" selectors without the "match:" prefix
+			  "workspace 1, match:class ^(kitty)$"
+			  "workspace 2, match:initial_title ^(Mozilla Firefox)$"
+			  "workspace 5, match:class ^(org.telegram.desktop)$, match:initial_title ^(Telegram)$"
+			  "match:float yes, match:class ^(org.telegram.desktop)$, match:initial_title ^(?!.*Telegram*.)$"
+			  "workspace 5, match:class ^(whatsapp-for-linux)$"
+			  "workspace 6, match:class ^(discord)$, match:title ^(discord)$"
+			  "workspace 9, match:initial_title ^(Spotify( Premium)?)$"
 
-			windowrulev2 = [
-				"suppressevent maximize, class:.*"
-				"workspace 1, class:(kitty)$, title:(kitty)$"
-				"workspace 2, initialTitle:(Mozilla Firefox)$"
-				"workspace 5, class:(org.telegram.desktop)$, initialTitle:(Telegram)$"
-				"float, class:(org.telegram.desktop)$, initialTitle:^(?!.*Telegram*.)$"
-				"workspace 5, class:(whatsapp-for-linux)$"
-				"workspace 7, class:(webcord)$, title:(webcord)$"
-				"workspace 9, initialTitle:^(Spotify( Premium)?)$"
-
-				"opacity 0.0 override, class:^(xwaylandvideobridge)$"
-				"noanim, class:^(xwaylandvideobridge)$"
-				"noinitialfocus, class:^(xwaylandvideobridge)$"
-				"maxsize 1 1, class:^(xwaylandvideobridge)$"
-				"noblur, class:^(xwaylandvideobridge)$"
+			  # Rules for XWayland Video Bridge
+			  "opacity 0.0 override, match:class ^xwaylandvideobridge$"
+			  "no_anim on, match:class ^xwaylandvideobridge$"
+			  "no_initial_focus on, match:class ^xwaylandvideobridge$"
+			  "max_size 1 1, match:class ^xwaylandvideobridge$"
+			  "no_blur on, match:class ^xwaylandvideobridge$"
 			];
 		};
 

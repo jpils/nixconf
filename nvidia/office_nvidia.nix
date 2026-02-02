@@ -1,29 +1,32 @@
-{pkgs, config, ... }:
+{ pkgs, config, ... }:
 
 {
-	hardware = {
-		graphics = {
-			enable = true;
-		};
+    hardware = {
+        graphics = {
+            enable = true;
+            # 32-bit support is often needed for Steam/Games on a 3070 Ti
+            enable32Bit = true; 
+        };
 
-		nvidia = {
-			open = true;
-			nvidiaSettings = true;
-			modesetting.enable = true;
-			powerManagement.enable = false;
-			powerManagement.finegrained = false;
-			package = config.boot.kernelPackages.nvidiaPackages.latest;
-		};
-	};
-		
-	services.xserver.videoDrivers = ["nvidia"];
+        nvidia = {
+            # Keeps the 3070 Ti stable on Wayland
+            modesetting.enable = true;
+            
+            powerManagement.enable = true;
+            
+            # Ampere (30-series) supports this, but it can sometimes cause 
+            # flicker on wake. Keep it false first; if battery/power is 
+            # a huge concern, you can try true later.
+            powerManagement.finegrained = false;
 
-	environment.systemPackages = with pkgs; [
-		dconf
-		dconf-editor
-	];
+            open = true; # Using the Open modules is great for 30-series
+            nvidiaSettings = true;
+            package = config.boot.kernelPackages.nvidiaPackages.latest;
+        };
+    };
 
-	services.dbus.enable = true;
+    # Force the kernel to allocate space to save your GPU's 'brain'
+    boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 
-	programs.coolercontrol.enable = true;
+    services.xserver.videoDrivers = ["nvidia"];
 }

@@ -3,6 +3,11 @@
 let
 	wallpaper = ../../Wallpapers/mandelbrot.png;
 in {
+	imports = [
+		./hypridle.nix
+		./hyprlock.nix
+	];
+
 	home.packages = with pkgs; [
 		swww
 		bibata-cursors
@@ -38,7 +43,7 @@ in {
 			];
 
 			"$terminal" = "kitty";
-			"$filebrowser" = "thunar";
+			"$filebrowser" = "dolphin";
 
 			env = [
 				"QT_QPA_PLATFORM,wayland"

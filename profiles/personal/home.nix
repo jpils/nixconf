@@ -36,7 +36,6 @@
 		htop
 		kitty
 		ovito
-		xfce.thunar
 		notify
 		jmol
 		libreoffice-qt
@@ -58,7 +57,6 @@
 		telegram-desktop
 		tree
 		discord
-		whatsapp-for-linux
 		wl-clipboard
 		xournalpp
 		zathura
