@@ -5,7 +5,7 @@
 		plugins = with pkgs.vimPlugins; [
 			lualine-nvim
 		];
-		extraLuaConfig = /* lua */ ''
+		initLua = /* lua */ ''
 			require('lualine').setup {
 				options = {
 					icons_enabled = true,

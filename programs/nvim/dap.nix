@@ -10,7 +10,7 @@
 			nvim-dap-ui
 			nvim-dap-virtual-text
 		];
-		extraLuaConfig = /* lua */ ''
+		initLua = /* lua */ ''
 			require("telescope").setup({ extensions = { ["ui-select"] = {} } })
 			require("telescope").load_extension("ui-select")
 

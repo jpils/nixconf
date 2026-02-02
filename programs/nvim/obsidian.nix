@@ -5,7 +5,7 @@
 		plugins = with pkgs.vimPlugins; [
 			obsidian-nvim
 		];
-		extraLuaConfig = /* lua */ ''
+		initLua = /* lua */ ''
 			require('obsidian').setup({
 				
 

@@ -12,7 +12,7 @@
         #extraPython3Packages = ps: with ps; [
 		#	jupytext
 		#];
-		extraLuaConfig = /* lua */ ''
+		initLua = /* lua */ ''
 			require("jupytext").setup({
 				style = "markdown",
 				output_extension = "md",

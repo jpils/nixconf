@@ -26,7 +26,13 @@
     };
 
     # Force the kernel to allocate space to save your GPU's 'brain'
-    boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+	boot.kernelParams = [
+	  "nvidia-drm.modeset=1"
+	  "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+	];
+
+	hardware.nvidia.modesetting.enable = true;
+	hardware.nvidia.powerManagement.enable = true;
 
     services.xserver.videoDrivers = ["nvidia"];
 }

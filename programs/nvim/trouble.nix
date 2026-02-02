@@ -5,7 +5,7 @@
 		plugins = with pkgs.vimPlugins; [
 			trouble-nvim
 		];
-		extraLuaConfig = /* lua */ ''
+		initLua = /* lua */ ''
 			require("trouble").setup({
 				icons = false,
 			})

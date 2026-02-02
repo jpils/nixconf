@@ -7,12 +7,10 @@ in {
     enable = true;
     settings = {
       general = {
-        disable_loading = true;
-        grace = 0;
         hide_cursor = false;
-        # These ensure the fade happens
-        no_fade_in = false;
-        no_fade_out = false;
+		fractional_scaling = 1;
+		fail_timeout = 1000;
+		ignore_empty_input = true;
       };
 
       # Animation configuration

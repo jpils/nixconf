@@ -5,7 +5,7 @@
 		plugins = with pkgs.vimPlugins; [
 			indent-blankline-nvim
 		];
-		extraLuaConfig = /* lua */ ''
+		initLua = /* lua */ ''
 			require("ibl").setup({
 				scope = {
 					show_start = false,

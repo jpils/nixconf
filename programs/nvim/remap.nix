@@ -2,7 +2,7 @@
 
 {
 	programs.neovim = {
-		extraLuaConfig = /* lua */ '' 
+		initLua = /* lua */ '' 
 			--leader
 			vim.g.mapleader = " "
 			--netrw

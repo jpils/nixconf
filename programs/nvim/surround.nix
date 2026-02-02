@@ -5,7 +5,7 @@
 		plugins = with pkgs.vimPlugins; [
 			nvim-surround
 		];
-		extraLuaConfig = /* lua */ ''
+		initLua = /* lua */ ''
 			require("nvim-surround").setup({})
 		'';
 	};

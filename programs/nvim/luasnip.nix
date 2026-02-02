@@ -5,7 +5,7 @@
 		plugins = with pkgs.vimPlugins; [
 			luasnip	
 		];
-		extraLuaConfig = /* lua */ ''
+		initLua = /* lua */ ''
 			local ls = require "luasnip"
 			local types = require "luasnip.util.types"
 

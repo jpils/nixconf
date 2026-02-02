@@ -6,7 +6,7 @@
 			quarto-nvim
 			otter-nvim
 		];
-		extraLuaConfig = /* lua */ ''
+		initLua = /* lua */ ''
 			local quarto = require("quarto")
 		    quarto.setup({
 		      lspFeatures = {

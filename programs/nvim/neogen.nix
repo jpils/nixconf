@@ -5,7 +5,7 @@
 		plugins = with pkgs.vimPlugins; [
 			neogen
 		];
-		extraLuaConfig = /* lua */ ''
+		initLua = /* lua */ ''
 			local neogen = require("neogen")
 
 			neogen.setup({

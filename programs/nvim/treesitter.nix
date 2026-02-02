@@ -10,7 +10,7 @@
       nvim-treesitter-textobjects
     ];
 
-    extraLuaConfig = /* lua */ ''
+    initLua = /* lua */ ''
 	  require'nvim-treesitter'.setup {
 		  auto_install = false,
 		  indent = {

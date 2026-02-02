@@ -2,7 +2,7 @@
 
 {
 	programs.neovim = {
-		extraLuaConfig = /* lua */ '' 
+		initLua = /* lua */ '' 
 			local image = require("image")
 
 			  image.setup({

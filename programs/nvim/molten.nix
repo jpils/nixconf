@@ -27,7 +27,7 @@
         pyperclip
 		nbformat
       ];
-	  extraLuaConfig = /* lua */ ''
+	  initLua = /* lua */ ''
 		-- I find auto open annoying, keep in mind setting this option will require setting
 		-- a keybind for `:noautocmd MoltenEnterOutput` to open the output again
 		vim.g.molten_auto_open_output = false

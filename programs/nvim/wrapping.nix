@@ -5,7 +5,7 @@
 		plugins = with pkgs.vimPlugins; [
 			wrapping-nvim
 		];
-		extraLuaConfig = /* lua */ ''
+		initLua = /* lua */ ''
 			require("wrapping").setup()
 		'';
 	};

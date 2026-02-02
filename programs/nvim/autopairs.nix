@@ -5,7 +5,7 @@
 		plugins = with pkgs.vimPlugins; [
 			nvim-autopairs
 		];
-		extraLuaConfig = /* lua */ ''
+		initLua = /* lua */ ''
 			require("nvim-autopairs").setup {}
 		'';
 	};

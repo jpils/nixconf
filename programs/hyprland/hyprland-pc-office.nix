@@ -143,7 +143,7 @@ in {
 				"$super, F, togglefloating,"
 				"$super, R, exec, $menu"
 				"$super, P, pseudo, # dwindle"
-				"$super, J, togglesplit, # dwindle"
+				#"$super, J, togglesplit, # dwindle"
 				"$super, D, exec, rofi -modi drun -show drun -show-icons -config ~/.config/rofi/rofidmenu.rasi"
 
 				"$super, H, movefocus, l"

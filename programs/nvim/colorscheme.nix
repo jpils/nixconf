@@ -6,7 +6,7 @@
 			#catppuccin-nvim
 			nord-nvim
 		];
-		extraLuaConfig = /* lua */ '' 
+		initLua = /* lua */ '' 
 			--require("catppuccin").setup({
 			--	color_overrides = {
 			--		mocha = {
