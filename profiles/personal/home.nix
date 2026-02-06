@@ -7,7 +7,8 @@
 		../../programs/nvim/nvim.nix
 		../../programs/zsh/zsh.nix
 		../../programs/stylix/stylix.nix
-		../../programs/waybar/waybar.nix
+		#../../programs/waybar/waybar.nix
+		../../programs/ags/ags.nix
 		../../programs/kitty/kitty.nix
 	];
 	

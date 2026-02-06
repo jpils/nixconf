@@ -1,0 +1,101 @@
+$fg-color: #{"@theme_fg_color"};
+$bg-color: #{"@theme_bg_color"};
+
+window.Bar {
+  background: $bg-color;
+  color: $fg-color;
+
+  > centerbox {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  button {
+    border-radius: 8px;
+    margin: 4px;
+  }
+
+  .clock {
+    font-weight: 700;
+    font-size: 13px;
+    padding: 0 16px;
+    letter-spacing: 0;
+    font-feature-settings: "tnum";
+  }
+
+  .workspaces {
+    button {
+      min-width: 28px;
+      min-height: 28px;
+      padding: 0 4px;
+      margin: 4px 2px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 12px;
+      opacity: 0.5;
+      transition: opacity 200ms;
+
+      &.focused {
+        opacity: 1;
+        background: $fg-color;
+        color: $bg-color;
+      }
+    }
+  }
+
+  .network {
+    margin: 4px 8px;
+  }
+}
+
+/* Network panel popover */
+.network-panel {
+  padding: 8px;
+
+  .section {
+    padding: 4px 0;
+  }
+
+  .section-header {
+    padding: 8px;
+    font-weight: 700;
+  }
+
+  .section-title {
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .connected-info {
+    padding: 4px 8px;
+    margin: 0 4px;
+    border-radius: 8px;
+  }
+
+  .connected-ssid {
+    font-weight: 600;
+  }
+
+  .dim {
+    opacity: 0.5;
+    font-size: 12px;
+  }
+
+  .disabled-info {
+    padding: 8px;
+  }
+
+  .ap-list {
+    .ap-item {
+      padding: 6px 8px;
+      margin: 1px 4px;
+      border-radius: 8px;
+    }
+  }
+
+  .settings-btn {
+    padding: 8px;
+    margin: 4px;
+    border-radius: 8px;
+  }
+}

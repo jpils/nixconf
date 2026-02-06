@@ -15,6 +15,8 @@
 		stylix.url = "github:danth/stylix";
 		matugen.url = "github:InioX/matugen?ref=v2.2.0";
 		flake-utils.url  = "github:numtide/flake-utils";
+	    astal.url = "github:aylur/astal";
+		ags.url = "github:aylur/ags"; 
 	};
 
 	outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs: 
