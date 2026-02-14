@@ -123,6 +123,22 @@ function BluetoothSection() {
 }
 
 function VolumeSection() {
+  const adjustment = new Gtk.Adjustment({
+    lower: 0,
+    upper: 100,
+    value: 50,
+    stepIncrement: 5,
+    pageIncrement: 10,
+  })
+
+  // Fetch current system volume on init
+  execAsync("wpctl get-volume @DEFAULT_AUDIO_SINK@")
+    .then((out) => {
+      const match = out.match(/Volume:\s+([\d.]+)/)
+      if (match) adjustment.set_value(parseFloat(match[1]) * 100)
+    })
+    .catch(() => {})
+
   return (
     <box orientation={Gtk.Orientation.VERTICAL} class="qs-section">
       <box spacing={8} class="qs-row">
@@ -134,15 +150,7 @@ function VolumeSection() {
         <Gtk.Scale
           hexpand
           orientation={Gtk.Orientation.HORIZONTAL}
-          adjustment={
-            new Gtk.Adjustment({
-              lower: 0,
-              upper: 100,
-              value: 50,
-              stepIncrement: 5,
-              pageIncrement: 10,
-            })
-          }
+          adjustment={adjustment}
           onChangeValue={(self) => {
             const val = Math.round(self.get_value())
             execAsync(`wpctl set-volume @DEFAULT_AUDIO_SINK@ ${val}%`).catch(() => {})

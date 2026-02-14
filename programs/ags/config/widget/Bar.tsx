@@ -48,7 +48,7 @@ function FocusedWindow() {
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
   const time = createPoll("", 5000, () => {
-    return GLib.DateTime.new_now_local().format("%a %b %-e  %-l:%M %p")!
+    return GLib.DateTime.new_now_local().format("%a %b %-e %-l:%M %p")!
   })
 
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
