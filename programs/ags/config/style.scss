@@ -1,101 +1,155 @@
 $fg-color: #{"@theme_fg_color"};
 $bg-color: #{"@theme_bg_color"};
 
+// GNOME-like panel colors
+$panel-bg: rgba(0, 0, 0, 0.6);
+$panel-fg: #ffffff;
+$hover-bg: rgba(255, 255, 255, 0.1);
+$active-bg: rgba(255, 255, 255, 0.18);
+$qs-bg: $bg-color;
+$qs-fg: $fg-color;
+$qs-hover: rgba(255, 255, 255, 0.06);
+$qs-radius: 12px;
+$qs-section-radius: 12px;
+
 window.Bar {
-  background: $bg-color;
-  color: $fg-color;
+  background: $panel-bg;
+  color: $panel-fg;
+  font-size: 13px;
 
   > centerbox {
     margin: 0;
     border-radius: 0;
+    min-height: 28px;
   }
 
   button {
     border-radius: 8px;
-    margin: 4px;
+    margin: 2px 1px;
+    padding: 0 8px;
+    min-height: 24px;
+    background: transparent;
+    color: $panel-fg;
+    border: none;
+    transition: background 200ms;
+
+    &:hover {
+      background: $hover-bg;
+    }
+    &:active {
+      background: $active-bg;
+    }
+  }
+
+  menubutton > button {
+    border-radius: 8px;
+    margin: 2px 1px;
+    padding: 0 8px;
+    min-height: 24px;
+    background: transparent;
+    color: $panel-fg;
+    border: none;
+    transition: background 200ms;
+
+    &:hover {
+      background: $hover-bg;
+    }
+    &:active {
+      background: $active-bg;
+    }
   }
 
   .clock {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 13px;
-    padding: 0 16px;
-    letter-spacing: 0;
+    padding: 0 12px;
+    letter-spacing: 0.02em;
     font-feature-settings: "tnum";
   }
 
   .workspaces {
     button {
-      min-width: 28px;
-      min-height: 28px;
+      min-width: 8px;
+      min-height: 8px;
       padding: 0 4px;
       margin: 4px 2px;
       border-radius: 8px;
       font-weight: 700;
-      font-size: 12px;
+      font-size: 11px;
       opacity: 0.5;
-      transition: opacity 200ms;
+      transition: all 200ms;
 
       &.focused {
         opacity: 1;
-        background: $fg-color;
-        color: $bg-color;
+        background: $panel-fg;
+        color: #1e1e2e;
       }
     }
   }
 
-  .network {
-    margin: 4px 8px;
+  .focused-window {
+    margin: 0 8px;
+    opacity: 0.8;
+    font-size: 13px;
+    font-weight: 500;
+
+    label {
+      color: $panel-fg;
+    }
+  }
+
+  .system-indicators {
+    image {
+      margin: 0 2px;
+      font-size: 16px;
+    }
   }
 }
 
-/* Network panel popover */
-.network-panel {
-  padding: 8px;
+/* ---------- Quick Settings panel ---------- */
+.quick-settings {
+  padding: 12px;
 
-  .section {
+  .qs-section {
     padding: 4px 0;
   }
 
-  .section-header {
-    padding: 8px;
-    font-weight: 700;
+  .qs-row {
+    padding: 8px 12px;
+    border-radius: $qs-section-radius;
+
+    .qs-title {
+      font-weight: 600;
+      font-size: 13px;
+    }
   }
 
-  .section-title {
-    font-weight: 700;
-    font-size: 13px;
-  }
-
-  .connected-info {
-    padding: 4px 8px;
-    margin: 0 4px;
-    border-radius: 8px;
-  }
-
-  .connected-ssid {
-    font-weight: 600;
-  }
-
-  .dim {
+  .qs-dim {
     opacity: 0.5;
     font-size: 12px;
   }
 
-  .disabled-info {
-    padding: 8px;
-  }
+  .qs-slider-row {
+    padding: 4px 12px;
+    border-radius: $qs-section-radius;
 
-  .ap-list {
-    .ap-item {
-      padding: 6px 8px;
-      margin: 1px 4px;
-      border-radius: 8px;
+    scale {
+      margin: 0 4px;
     }
   }
 
-  .settings-btn {
+  .qs-power-row {
+    padding: 8px 4px 4px 4px;
+  }
+
+  .qs-power-btn {
     padding: 8px;
-    margin: 4px;
-    border-radius: 8px;
+    border-radius: $qs-section-radius;
+    min-width: 36px;
+    min-height: 36px;
+
+    &:hover {
+      background: $qs-hover;
+    }
   }
 }
