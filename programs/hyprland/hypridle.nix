@@ -6,7 +6,7 @@
     settings = {
       general = {
         # Avoid starting multiple hyprlock instances
-        lock_cmd = "pidof hyprlock --grace 5 || hyprlock --grace 5";
+        lock_cmd = "pidof hyprlock --grace 10 || hyprlock --grace 10";
         # Lock before the system goes to sleep
         before_sleep_cmd = "loginctl lock-session";
         # Turn on display when waking up
@@ -21,7 +21,7 @@
         }
         {
           # 6 minutes: Turn off screen (DPMS)
-          timeout = 360;
+          timeout = 330;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
