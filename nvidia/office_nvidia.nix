@@ -13,10 +13,6 @@
             modesetting.enable = true;
             
             powerManagement.enable = true;
-            
-            # Ampere (30-series) supports this, but it can sometimes cause 
-            # flicker on wake. Keep it false first; if battery/power is 
-            # a huge concern, you can try true later.
             powerManagement.finegrained = false;
 
             open = true; # Using the Open modules is great for 30-series
@@ -29,10 +25,38 @@
 	boot.kernelParams = [
 	  "nvidia-drm.modeset=1"
 	  "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+	  # Explicitly remove fbdev for Wayland
 	];
 
-	hardware.nvidia.modesetting.enable = true;
-	hardware.nvidia.powerManagement.enable = true;
-
     services.xserver.videoDrivers = ["nvidia"];
+
+    # Add suspend/resume workaround
+    systemd.services.nvidia-suspend = {
+        description = "Reload NVIDIA drivers on suspend";
+        wantedBy = [ "sleep.target" ];
+        before = [ "systemd-suspend.service" ];
+        script = ''
+            sleep 1
+            ${pkgs.kmod}/bin/modprobe -r nvidia_drm nvidia_modeset nvidia_uvm nvidia
+            sleep 2
+        '';
+        serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = false;
+        };
+    };
+
+    systemd.services.nvidia-resume = {
+        description = "Reload NVIDIA drivers after resume";
+        wantedBy = [ "resume.target" ];
+        after = [ "systemd-resume.service" ];
+        script = ''
+            sleep 2
+            ${pkgs.kmod}/bin/modprobe nvidia nvidia_uvm nvidia_modeset nvidia_drm
+        '';
+        serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = false;
+        };
+    };
 }
