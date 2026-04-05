@@ -6,7 +6,7 @@
 	stylix = {
 		enable = true;
 
-		base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+		base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml"; #creates yaml colorscheme (gtk apps use this)
 		polarity = "dark";
 		image = ../../Wallpapers/Mountains-Nord.jpg;
 
@@ -30,6 +30,12 @@
 		targets = {
 			neovim.enable = false;
 			hyprland.enable = true;
+			#ghostty = {
+			#	colors.enable = true;
+			#	#fonts = {
+			#	#	enable = true;
+			#	#};
+			#};
 		};
 	};
 }

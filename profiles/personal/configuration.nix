@@ -4,7 +4,7 @@
 { config, lib, pkgs, inputs, ... }:
 let 
 	inherit (lib) mkIf mkDefault;
-	inherit (inputs.hyprland.packages.${pkgs.system}) hyprland xdg-desktop-portal-hyprland;
+	#inherit (inputs.hyprland.packages.${pkgs.system}) hyprland xdg-desktop-portal-hyprland;
 in {
 	# Use the systemd-boot EFI boot loader.
 	boot.loader.systemd-boot.enable = true;
@@ -34,17 +34,20 @@ in {
 
 	# Enable the X11 windowing system.
 	services.xserver.enable = true;
-	services.displayManager.sddm.enable = true;
-	services.displayManager.sddm.wayland.enable = true;
+	#services.displayManager.sddm.enable = true;
+	#services.displayManager.sddm.wayland.enable = true;
 
-	programs = {
-		hyprland = {
-			enable = true;
-			xwayland.enable = true;
-			package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-			portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-		};
-	};
+	services.desktopManager.cosmic.enable = true;
+	services.displayManager.cosmic-greeter.enable = true;
+
+	#programs = {
+	#	hyprland = {
+	#		enable = true;
+	#		xwayland.enable = true;
+	#		package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+	#		portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+	#	};
+	#};
 
 	services.displayManager = {
 		enable = true;
@@ -58,17 +61,17 @@ in {
 		NIXOS_OZONE_WL = "1";
 	};
 
-	services.auto-cpufreq.enable = true; 
-	services.auto-cpufreq.settings = {
-		battery = {
-			governor = "powersave";
-			turbo = "never";
-		};
-		charger = {
-			governor = "performance";
-			turbo = "auto";
-		};
-	};
+	#services.auto-cpufreq.enable = true; 
+	#services.auto-cpufreq.settings = {
+	#	battery = {
+	#		governor = "powersave";
+	#		turbo = "never";
+	#	};
+	#	charger = {
+	#		governor = "performance";
+	#		turbo = "auto";
+	#	};
+	#};
 
 	services.keyd = {
 		enable = true;

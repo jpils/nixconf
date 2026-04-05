@@ -51,7 +51,7 @@
 						./programs/syncthing/syncthing-laptop.nix
 						./suspend-then-hibernate.nix
 						./profiles/personal/is-laptop.nix
-						./programs/tlp/tlp.nix
+						#./programs/tlp/tlp.nix
 					];
 				};
 				office-pc = lib.nixosSystem {
@@ -83,7 +83,7 @@
 					extraSpecialArgs = { inherit inputs; };
 					modules = [ 
 						commonHomeConfiguration
-						./programs/hyprland/hyprland-laptop.nix
+						#./programs/hyprland/hyprland-laptop.nix
 					];
 				};
 				office-pc = home-manager.lib.homeManagerConfiguration {

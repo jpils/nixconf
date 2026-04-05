@@ -33,6 +33,7 @@ in
 		conda
 		discord
 		dmenu
+		ghostty
 		dunst
 		fd
 		firefox

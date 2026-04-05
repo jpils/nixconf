@@ -8,7 +8,8 @@
 		../../programs/zsh/zsh.nix
 		../../programs/stylix/stylix.nix
 		../../programs/waybar/waybar.nix
-		../../programs/kitty/kitty.nix
+		../../programs/ghostty/ghostty.nix
+		../../programs/cosmic/cosmic.nix
 	];
 	
 	home.username = "jay";
@@ -26,6 +27,7 @@
 		btop
 		brightnessctl
 		dmenu
+		ghostty
 		dunst
 		fd
 		firefox
