@@ -12,6 +12,14 @@
 			url = "github:hyprwm/hyprland-plugins";
 			inputs.hyprland.follows = "hyprland";
 		};
+		dms = {
+		  url = "github:AvengeMedia/DankMaterialShell/stable";
+		  inputs.nixpkgs.follows = "nixpkgs";
+		};
+		dms-plugin-registry = {
+		  url = "github:AvengeMedia/dms-plugin-registry";
+		  inputs.nixpkgs.follows = "nixpkgs";
+		};
 		stylix.url = "github:danth/stylix";
 		matugen.url = "github:InioX/matugen?ref=v2.2.0";
 		flake-utils.url  = "github:numtide/flake-utils";

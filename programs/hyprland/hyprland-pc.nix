@@ -4,8 +4,9 @@ let
 	wallpaper = ../../Wallpapers/mandelbrot.png;
 in {
 	imports = [
-		./hypridle.nix
-		./hyprlock.nix
+		#./hypridle.nix
+		#./hyprlock.nix
+		../dms/dms.nix
 	];
 
 	home.packages = with pkgs; [
@@ -36,7 +37,8 @@ in {
 		settings = {
 
 			exec-once = [
-				"waybar"
+			#	"waybar"
+				"dms run"
             ]; 
 
 			monitor = [
@@ -49,6 +51,10 @@ in {
 			env = [
 				"QT_QPA_PLATFORM,wayland"
 				"QT_QPA_PLATFORMTHEME,qt5ct"
+
+				"env = DMS_DISABLE_MATUGEN,1"
+				"env = DMS_DANKBAR_LAYER,overlay"
+				"env = DMS_HIDE_TRAYIDS,discord,spotify"
 			];
 			
 			general = { 
