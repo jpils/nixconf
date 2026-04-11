@@ -8,7 +8,7 @@
 		../../programs/zsh/zsh.nix
 		../../programs/stylix/stylix.nix
 		../../programs/waybar/waybar.nix
-		../../programs/kitty/kitty.nix
+		../../programs/ghostty/ghostty.nix
 	];
 	
 	home.username = "jay";

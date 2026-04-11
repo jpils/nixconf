@@ -1,4 +1,3 @@
-*.log
 tmux/*
 standalone/*
 programs/extern/BigIP/*

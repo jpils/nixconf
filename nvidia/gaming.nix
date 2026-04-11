@@ -12,7 +12,7 @@
 			nvidiaSettings = true;
 			modesetting.enable = true;
 			powerManagement.enable = false;
-			package = config.boot.kernelPackages.nvidiaPackages.production;
+			package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
 		};
 	};
 		
@@ -26,6 +26,11 @@
 		dconf
 		dconf-editor
 	];
+
+	environment.sessionVariables = {
+		WLR_DRM_DEVICES = "/dev/dri/card1";
+		GBM_BACKEND = "nvidia-drm";
+	};
 
 	services.dbus.enable = true;
 

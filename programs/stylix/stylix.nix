@@ -8,7 +8,7 @@
 
 		base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 		polarity = "dark";
-		image = ../../Wallpapers/Mountains-Nord.jpg;
+		image = ../../Wallpapers/mandelbrot.png;
 
 		fonts = {
 			monospace = {
