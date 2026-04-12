@@ -36,6 +36,7 @@ in {
 	services.xserver.enable = true;
 	services.displayManager.sddm.enable = true;
 	services.displayManager.sddm.wayland.enable = true;
+	services.system76-scheduler.settings.cfsProfiles.enable = true;
 
 	programs = {
 		hyprland = {
