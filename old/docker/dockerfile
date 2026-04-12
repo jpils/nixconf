@@ -1,0 +1,16 @@
+# Use Debian Bullseye as the base image
+FROM debian:bullseye
+
+# Update the package list and install packages
+RUN apt-get update && apt-get install -y \
+    curl \
+    vim
+
+# Set the working directory (optional)
+WORKDIR /home
+
+# Copy files from your host to your Docker image (optional)
+COPY ./BIGIPLinuxClient.tgz /home
+
+# Command to run when the container starts (optional)
+CMD ["bash"]

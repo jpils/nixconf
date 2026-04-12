@@ -1,0 +1,278 @@
+/* Created   by https://github.com/rxyhn 
+   Designed  by https://github.com/rxyhn
+   Maintaned by https://github.com/rxyhn
+*/
+
+// Global
+*{
+  all: unset;
+}
+
+// Variable Color's
+$background: #13111f;
+$foreground: #A9B1D6;
+$focused: #7DCFFF;
+
+$black: #24283B;
+$gray: #565F89;
+$red: #F7768E;
+$green: #73DACA;
+$yellow: #E0AF68;
+$blue: #7AA2F7;
+$magenta: #BB9AF7;
+$cyan: #7DCFFF;
+$white: $foreground;
+$teal: #71C9B1;
+$orange: #E19177;
+
+
+// EWW BAR
+.eww_bar{
+  background-color: $background;
+  padding: .3rem;
+  border-radius: 10px;
+}
+
+// Launcher
+//.update_icon{
+//    color: $cyan;
+//    font-family: "Font Awesome 6 Pro";
+//    font-size: 1.7em;
+//    padding: .75rem 11.5 1rem 3;
+//}
+
+// Workspaces
+.works {
+font-family: "Font Awesome 6 Pro";
+padding: .5rem .9rem .1rem .7rem;
+background-color: $black;
+border-radius: 5px;
+margin-top: 4px;
+}
+
+/*.0 , .00, .01, .02, .03, .04, .05,
+.000, .011, .022, .033, .044, .055{
+  margin: .65rem 4 .55rem 0;
+}*/
+
+.workspace_00e, .workspace_01e, .workspace_02e, .workspace_03e, .workspace_04e, .workspace_05e, .workspace_06e, .workspace_07e, .workspace_08e, .workspace_09e,
+.workspace_0e0, .workspace_0e1, .workspace_0e2, .workspace_0e3, .workspace_0e4, .workspace_0e5, .workspace_0e6, .workspace_0e7, .workspace_0e8, .workspace_0e9,
+.workspace_000, .workspace_011, .workspace_022, .workspace_033, .workspace_044, .workspace_055, .workspace_066, .workspace_077, .workspace_088, .workspace_099{
+}
+
+/* Unoccupied 
+.0 {
+  color: $gray;
+  font-size: 1.4em;
+}*/
+
+/* Occupied not focused */
+.workspace_00e, .workspace_01e, .workspace_02e, .workspace_03e, .workspace_04e, .workspace_05e, .workspace_06e, .workspace_07e, .workspace_08e, .workspace_09e{
+  color: $foreground;
+}
+ /* Focused not occupied */ 
+.workspace_0e0, .workspace_0e1, .workspace_0e2, .workspace_0e3, .workspace_0e4, .workspace_0e5, .workspace_0e6, .workspace_0e7, .workspace_0e8, .workspace_0e9{
+	color: $focused;
+}
+
+/* Focused */
+.workspace_000,
+.workspace_011,
+.workspace_022,
+.workspace_033,
+.workspace_044,
+.workspace_055,
+.workspace_066,
+.workspace_077,
+.workspace_088,
+.workspace_099{
+  color: $focused;
+}
+
+.workspace_00e,
+.workspace_0e0,
+.workspace_000{
+	font-size: 1em;
+	margin: .25rem 4 .55rem 0;
+}
+.workspace_01e,
+.workspace_0e1,
+.workspace_011{
+	font-size: 1.4em;
+	margin: .45rem 6 .55rem 0;
+}
+.workspace_02e,
+.workspace_0e2,
+.workspace_022{
+	font-size: 1.4em;
+	margin: .55rem 1 .55rem 0;
+}
+.workspace_03e,
+.workspace_0e3,
+.workspace_033{
+	font-size: 1.4em;
+	margin: .65rem 5 .55rem 0;
+}
+.workspace_04e,
+.workspace_0e4,
+.workspace_044{
+	font-size: 1.4em;
+	margin: .45rem 5 .55rem 0;
+}
+.workspace_05e,
+.workspace_0e5,
+.workspace_055{
+	font-size: 1.3em;
+	margin: .30rem 3 .55rem 0;
+}
+.workspace_06e,
+.workspace_0e6,
+.workspace_066{
+	font-size: 1.23em;
+	margin: .45rem -2 .55rem 0;
+}
+.workspace_07e,
+.workspace_0e7,
+.workspace_077{
+	font-size: 1.6em;
+	margin: .50rem 2.5 .55rem 0;
+}
+.workspace_08e,
+.workspace_0e8,
+.workspace_088{
+	font-size: 1.4em;
+	margin: .30rem 4.6 .55rem 0;
+}
+.workspace_09e,
+.workspace_0e9,
+.workspace_099{
+	font-size: 1.2em;
+	margin: .25rem 3.6 .55rem 0;
+}
+
+// Control Panel
+.control {
+padding: .5rem;
+font-family: Material Icons;
+font-size: 1.6em;
+background-color: $black;
+border-radius: 5px;
+}
+.bat{
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 1.1em;
+  padding: 0rem .527rem .2rem 0rem;
+  color: $teal;
+}
+.wifi-icon{
+  margin: .2rem 6 .5rem 0;
+  color: $magenta;
+}
+.bluetooth-icon{
+	margin: 0rem .2 .4rem 0;
+	color: $blue;
+}
+.brightness-icon{
+  margin: .0rem 7 .8rem 0;
+  color: $yellow;
+}
+.volume-icon{
+  margin: -.3rem 1 .2rem 0;
+  color: $orange;
+}
+scale trough {
+  all: unset;
+  background-color: $background;
+  border-radius: 5px;
+  min-height: 80px;
+  min-width: 10px;
+  margin: .3rem 0 .3rem 0;
+}
+.bribar trough highlight {
+  background-color: $yellow;
+  border-radius: 5px;
+}
+.volbar trough highlight {
+  background-color: $orange;
+  border-radius: 5px;
+}
+
+// Clock
+.time {
+  font-family: Iosevka;
+  font-weight: bold;
+  font-size: 1.4em;
+  background-color: $black;
+  color: $white;
+  border-radius: 5px;
+  padding: .7rem 0 .5rem 0;
+  margin: .5rem 0 .5rem 0;
+}
+
+// Calendar
+.cal-box {
+  background-color: $black;
+  font-family: Comic Mono;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 10px;
+
+  .cal-inner-box {
+      padding: 1rem 1rem .2rem;
+
+      .cal {
+          &.highlight {
+              padding: 10rem;
+          }
+
+          padding: .8rem .25rem 0rem;
+          margin-left: 10px;
+      }
+  }
+}
+
+calendar:selected {
+  color: $blue;
+}
+
+calendar.header {
+color: $blue;
+font-weight: bold;
+}
+
+calendar.button {
+color: $magenta;
+}
+
+calendar.highlight {
+color: $magenta;
+font-weight: bold;
+}
+
+calendar:indeterminate {
+color: $white;
+}
+
+// Powermenu
+.powermenu {
+  font-family: feather;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.button-bspres, .button-reb, .button-lock,
+.button-quit, .button-off{
+  padding: .5rem .6rem .3rem .2rem;
+}
+.button-off{
+  padding: .0rem .3rem .5rem .0rem;
+  color: $red;
+}
+.button-reb{
+  color: $yellow;
+  padding: .0rem .3rem .5rem .0rem;
+}
+.OS-logo{
+  color: $blue;
+  font-size: 1.4em;
+  margin: .0rem .75rem .5rem .0rem;
+}

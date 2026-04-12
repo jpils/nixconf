@@ -1,0 +1,7 @@
+{'floating_info': {'clients': ["qtile cmd-obj -o group -f info | awk '/name/' "
+                               "qtile cmd-obj -o group -f info | awk '/name/' "
+                   'name': 'floating'},
+ 'focus': "qtile cmd-obj -o group -f info | awk '/name/' > test.txt",
+                   "qtile cmd-obj -o group -f info | awk '/name/' > test.txt"],
+ 'name': '2',
+             "qtile cmd-obj -o group -f info | awk '/name/' > test.txt"]}

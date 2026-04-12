@@ -1,0 +1,33 @@
+#!/bin/sh
+
+calendar(){
+	is_launched=$(eww -c $HOME/.config/eww/bar2/ get launched)
+	echo  
+
+	if [ $is_launched == "0"  ]; then
+		eww -c $HOME/.config/eww/bar2/ open calendar
+		eww -c $HOME/.config/eww/bar2/ update launched="1"
+	elif [ $is_launched = "1" ]; then
+		eww -c $HOME/.config/eww/bar2/ close calendar
+		eww -c $HOME/.config/eww/bar2/ update launched="0"
+	fi
+
+# Open widgets
+
+}
+
+update_status() {
+	eww -c $HOME/.config/eww/bar2/ update  
+}
+
+if [ "$1" = "launcher" ]; then
+$HOME/.local/bin/launcher
+elif [ "$1" = "wifi" ]; then
+kitty -e nmtui
+elif [ "$1" = "audio" ]; then
+pavucontrol
+elif [ "$1" = "calendar" ]; then
+calendar
+elif [ "$1" = "status" ]; then
+status
+fi
