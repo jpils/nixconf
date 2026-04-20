@@ -1,12 +1,13 @@
 {self, inputs, ...}: {
-	flake.nixosModules.homePcConfiguration = { config, lib, pkgs, inputs, ... }: let
+	flake.nixosModules.workstationConfiguration = { config, lib, pkgs, inputs, ... }: let
 		custom-elegant-sddm = pkgs.elegant-sddm.override {
 			themeConfig.General.background = "${self.wallpaper}";
 		};
 	in {
 		imports = [
 			# hardware
-			self.nixosModules.homePcHardware
+			self.nixosModules.workstationHardware
+			
 			# system programs
 			self.nixosModules.ghostty
 			self.nixosModules.niri
@@ -49,10 +50,6 @@
 			};
 		};
 
-		programs.niri = {
-			enable = true;
-		};
-
 		environment.sessionVariables = {
 			NIXOS_OZONE_WL = "1";
 		};
@@ -89,7 +86,7 @@
 			openFirewall = true;
 		};
 
-		services.xserver = { xkb.layout = "us"; xkb.variant = "dvorak"; };
+		services.xserver = { xkb.layout = "us"; xkb.variant = ""; };
 		console.useXkbConfig = true;
 
 		security.rtkit.enable = true;

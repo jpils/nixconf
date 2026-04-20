@@ -1,40 +1,18 @@
 { self, inputs, ... }: {
-	flake.wrappersModules.niri = { config, lib, pkgs, ... }: {
-		options = {
-			keyboardLayout = lib.mkOption {
-				type = lib.types.str;
-				default = "us";
-				description = "Keyboard layout for Niri";
-			};
-			keyboardVariant = lib.mkOption {
-				type = lib.types.str;
-				default = "us";
-				description = "Keyboard variant for Niri";
-			};
-			outputMonitorName = lib.mkOption {
-				type = lib.types.str;
-				default = "*";
-				description = "Monitor name for Niri";
-			};
-			outputMode = lib.mkOption {
-				type = lib.types.str;
-				default = "preferred";
-				description = "Monitor resolution and refresh rate";
-			};
-			outputScaling = lib.mkOption {
-				type = lib.types.float;
-				default = 1.0;
-				description = "Fractional scaling value";
-			};
+	flake.nixosModules.niri = { pkgs, lib, ... }: {
+		programs.niri = { 
+			enable = true;
+			package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
 		};
+	};
 
-		config = {
+	perSystem = { pkgs, lib, self', ... }: {
+		packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
+			inherit pkgs;
 			settings = let 
-				selfPkgs = self.packages.${pkgs.stdenv.hostPlatform.system};
-				noctaliaExe = lib.getExe selfPkgs.noctalia;
+				noctaliaExe = lib.getExe self'.packages.noctalia;
 				zenExe = lib.getExe inputs.zen-browser.packages.${pkgs.system}.default;
-				ghosttyExe = lib.getExe selfPkgs.ghostty;
-				outputKey = config.outputName;
+				ghosttyExe = lib.getExe self'.packages.ghostty;
 			in {
 				prefer-no-csd = _: {};
 				hotkey-overlay.skip-at-startup = true;
@@ -51,8 +29,8 @@
 
 				input = {
 					keyboard = {
-						xkb.layout = config.keyboardLayout;
-						xkb.variant = config.keyboardVariant;
+					xkb.layout = "us";
+					xkb.variant = "dvorak";
 					};
 					touchpad = {
 						tap = _: {};              
@@ -60,10 +38,9 @@
 					};
 				};
 
-				outputs.${outputKey} = {
-					scale = config.outputScaling; 
-				} // lib.optionalAttrs (config.outputMode != "preferred") {
-					mode = config.outputMode;
+				outputs."eDP-1" = {
+					mode = "1920x1200"; 
+					scale = 1.0; 
 				};
 
 				layout = {
@@ -78,7 +55,7 @@
 				};
 
 				binds = {
-					"Mod+S".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
+					"Mod+S".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call launcher toggle";
 					"Mod+Return".spawn-sh = ghosttyExe;
 					"Mod+C".close-window = _: {};
 					
@@ -184,61 +161,6 @@
 					}
 				];
 			};
-		};
-	};
-
-	flake.nixosModules.niri = { config, pkgs, lib, ... }: let
-		cfg = config.programs.niri.custom;
-	in {
-		options.programs.niri.custom = {
-			enable = lib.mkEnableOption "Niri Wayland Compositor";
-			keyboardLayout = lib.mkOption {
-				type = lib.types.str;
-				default = "us";
-				description = "Keyboard layout for Niri";
-			};
-			keyboardVariant = lib.mkOption {
-				type = lib.types.str;
-				default = "us";
-				description = "Keyboard variant for Niri";
-			};
-			outputMonitorName = lib.mkOption {
-				type = lib.types.str;
-				default = "*";
-				description = "Monitor name for Niri";
-			};
-			outputMode = lib.mkOption {
-				type = lib.types.str;
-				default = "preferred";
-				description = "Monitor resolution and refresh rate";
-			};
-			outputScaling = lib.mkOption {
-				type = lib.types.float;
-				default = 1.0;
-				description = "Fractional scaling value";
-			};
-		};
-
-		config = lib.mkIf cfg.enable {
-			programs.niri = { 
-				enable = true;
-				package = inputs.wrapper-modules.wrappers.niri.wrap {
-					inherit pkgs;
-					imports = [ self.wrappersModules.niri ];
-					keyboardLayout = cfg.keyboardLayout;
-					keyboardVariant = cfg.keyboardVariant;
-					outputMonitorName = cfg.outputMonitorName;
-					outputMode = cfg.outputMode;
-					outputScaling = cfg.outputScaling;
-				};
-			};
-		};
-	};
-
-	perSystem = { pkgs, ... }: {
-		packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
-			inherit pkgs;
-			imports = [ self.wrappersModules.niri ];
 		};
 	};
 }
