@@ -28,6 +28,14 @@
 				set -g pane-base-index 1
 				set-window-option -g pane-base-index 1
 				set-option -g renumber-windows on
+
+				# Enable True Color, Italics, and Undercurls
+				set -g default-terminal "tmux-256color"
+				set -ag terminal-overrides ",xterm-256color:RGB,xterm-ghostty:RGB"
+				set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
+				
+				# Allow Ghostty's special escape sequences (like the lock icon) to pass through
+				set -g allow-passthrough on
 				
 				# Plugin Configs (Catppuccin via Nord plugin)
 				set -g @catppuccin_flavor 'mocha'

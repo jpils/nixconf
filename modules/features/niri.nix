@@ -191,7 +191,6 @@
 		cfg = config.programs.niri.custom;
 	in {
 		options.programs.niri.custom = {
-			enable = lib.mkEnableOption "Niri Wayland Compositor";
 			keyboardLayout = lib.mkOption {
 				type = lib.types.str;
 				default = "us";
@@ -219,7 +218,7 @@
 			};
 		};
 
-		config = lib.mkIf cfg.enable {
+		config = {
 			programs.niri = { 
 				enable = true;
 				package = inputs.wrapper-modules.wrappers.niri.wrap {
