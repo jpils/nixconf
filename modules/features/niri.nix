@@ -48,6 +48,8 @@
 				];
 
 				xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
+				
+				screenshot-path = "~/Pictures/Screenshots/Screenshot_from_%Y-%m-%d_%H-%M-%S.png";
 
 				input = {
 					keyboard = {
@@ -113,10 +115,8 @@
 					"Mod+Ctrl+5".move-column-to-workspace = 5;
 					
 					# relative workspace navigation
-					"Mod+Page_Down".focus-workspace-down = _: {};
-					"Mod+Page_Up".focus-workspace-up = _: {};
-					"Mod+Shift+Page_Down".move-column-to-workspace-down = _: {};
-					"Mod+Shift+Page_Up".move-column-to-workspace-up = _: {};
+					"Mod+Shift+J".move-workspace-down = _: {};
+					"Mod+Shift+K".move-workspace-up = _: {};
 					
 					# view modes
 					"Mod+F".fullscreen-window = _: {};

@@ -12,6 +12,7 @@
 			self.nixosModules.ghostty
 			self.nixosModules.niri
 			self.nixosModules.neovim
+			self.nixosModules.nvidia
 			self.nixosModules.cursor
 			self.nixosModules.tmux
 			self.nixosModules.zsh
