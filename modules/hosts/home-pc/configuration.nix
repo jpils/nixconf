@@ -8,6 +8,8 @@
 			# hardware
 			self.nixosModules.homePcHardware
 			# system programs
+			self.nixosModules.nvidia-pascal
+			self.nixosModules.gaming
 			self.nixosModules.ghostty
 			self.nixosModules.niri
 			self.nixosModules.neovim
@@ -52,6 +54,10 @@
 		programs.niri = {
 			enable = true;
 		};
+		programs.niri.custom = {
+			outputMonitorName = "DP-2";
+			outputMode = "2560x1440@165";
+		};
 
 		environment.sessionVariables = {
 			NIXOS_OZONE_WL = "1";
@@ -89,7 +95,7 @@
 			openFirewall = true;
 		};
 
-		services.xserver = { xkb.layout = "us"; xkb.variant = "dvorak"; };
+		services.xserver = { xkb.layout = "us"; xkb.variant = ""; };
 		console.useXkbConfig = true;
 
 		security.rtkit.enable = true;
@@ -139,6 +145,7 @@
 			pavucontrol
 			pulseaudio
 			qemu
+			ripgrep
 			tldr
 			unzip
 			wget

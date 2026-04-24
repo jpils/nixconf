@@ -34,7 +34,7 @@
 				noctaliaExe = lib.getExe selfPkgs.noctalia;
 				zenExe = lib.getExe inputs.zen-browser.packages.${pkgs.system}.default;
 				ghosttyExe = lib.getExe selfPkgs.ghostty;
-				outputKey = config.outputName;
+				outputKey = config.outputMonitorName;
 			in {
 				prefer-no-csd = _: {};
 				hotkey-overlay.skip-at-startup = true;
@@ -50,6 +50,12 @@
 				xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 				
 				screenshot-path = "~/Pictures/Screenshots/Screenshot_from_%Y-%m-%d_%H-%M-%S.png";
+
+				
+				cursor = {
+					xcursor-theme = "Bibata-Modern-Ice";
+					xcursor-size = 20;
+				};
 
 				input = {
 					keyboard = {
