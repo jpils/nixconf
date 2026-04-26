@@ -49,6 +49,17 @@
 			};
 		};
 
+
+		programs.niri = {
+			enable = true;
+		};
+		programs.niri.custom = {
+			outputMonitorName = "eDP-1";        # or "AU Optronics 0xD291 Unknown"
+			outputMode        = "1920x1200@60.026";
+			outputScaling     = 1.0;
+			keyboardVariant   = "dvorak";
+		};
+
 		environment.sessionVariables = {
 			NIXOS_OZONE_WL = "1";
 		};
