@@ -4,7 +4,7 @@
     plugins = with pkgs.vimPlugins; [
       # 1. Removed the duplicate nvim-treesitter entry
       (nvim-treesitter.withPlugins (p: with p; [
-        bash c cpp css lua python java markdown nix rust query javascript typescript
+        bash c cpp css lua python java markdown nix rust query javascript typescript latex
       ]))
       nvim-treesitter-textobjects
     ];

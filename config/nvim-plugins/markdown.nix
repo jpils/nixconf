@@ -8,11 +8,19 @@
 
 	extraPackages = with pkgs; [
 		luajit
+		python3
+		python313Packages.pylatexenc
 	];
 
 	lua = /* lua */ ''
 		require("render-markdown").setup({
 			file_types = { "markdown", "norg", "rmd" },
+			math = {
+				enabled = true,
+				latex = {
+					enabled = true,
+				},
+			},
 			code = {
 				sign = false,
 				style = "language",
