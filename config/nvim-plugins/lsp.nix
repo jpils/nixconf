@@ -3,22 +3,23 @@
 {
 	extraPackages = with pkgs; [
 		clang-tools
-		pyright
+		marksman
 		nil
+		nixd
+		pyright
 		rust-analyzer
 		texlab
-		nixd
 	];
 
 	plugins = with pkgs.vimPlugins; [
-		nvim-lspconfig
+		cmp-buffer
+		cmp_luasnip
+		cmp-nvim-lsp
+		cmp-nvim-lua
+		cmp-path
 		lsp-zero-nvim
 		nvim-cmp
-		cmp-nvim-lsp
-		cmp-buffer
-		cmp-path
-		cmp_luasnip
-		cmp-nvim-lua
+		nvim-lspconfig
 	];
 
 	lua = /* lua */ ''
@@ -46,8 +47,28 @@
 		  on_attach = lsp_zero.on_attach,
 		  capabilities = capabilities,
 		})
-
 		vim.lsp.enable('rust_analyzer')
+
+vim.lsp.config('marksman', {
+  on_attach = lsp_zero.on_attach,
+  capabilities = capabilities,
+  -- Use initialization_options for server-start settings
+  options = {
+    initialization_options = {
+      core = {
+        title_from_heading = false,
+      },
+    },
+  },
+})
+
+vim.lsp.enable('marksman')
+
+		vim.lsp.config('nixd', {
+		  on_attach = lsp_zero.on_attach,
+		  capabilities = capabilities,
+		})
+		vim.lsp.enable('nixd')
 
 		local cmp = require('cmp')
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }

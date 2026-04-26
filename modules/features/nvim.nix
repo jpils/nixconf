@@ -32,6 +32,7 @@
 				(import "${pluginDir}/vimtex.nix" { inherit pkgs; })
 				(import "${pluginDir}/trouble.nix" { inherit pkgs; })
 				(import "${pluginDir}/neogen.nix" { inherit pkgs; })
+				(import "${pluginDir}/markdown.nix" { inherit pkgs; })
 			];
 
 			modules = getPlugins pkgs;
