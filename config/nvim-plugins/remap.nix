@@ -45,5 +45,20 @@
 		--linewrapping
 		vim.keymap.set("n", "<C-b>", "<cmd>set wrap linebreak<CR>")
 		vim.keymap.set("n", "<leader><C-b>", "<cmd>set nowrap<CR>")
+
+		-- zettelkasten
+		vim.keymap.set('n', '<leader>td', function()
+			local date = os.date("%Y-%m-%d")
+			local path = os.getenv("HOME") .. "/Documents/Notes/Zettelkasten/00_Inbox/" .. date .. ".md"
+			
+			-- Check if file exists, if not, create it with a template
+			if vim.fn.filereadable(path) == 0 then
+				local file = io.open(path, "w")
+				file:write("# " .. date .. "\n\n## Tasks\n- [ ] \n\n## Notes\n\n## Links\n")
+				file:close()
+			end
+			
+			vim.cmd("edit " .. path)
+		end, { desc = "Open/Create Daily Note" })
 	'';
 }

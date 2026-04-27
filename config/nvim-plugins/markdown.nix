@@ -39,10 +39,6 @@
 				left_pad = 0,  -- Remove left padding/indentation
 				right_pad = 0,  -- Remove right padding
 			},
-			checkbox = {
-				unchecked = "󰄱 ",
-				checked = "󰱒 ",
-			},
 		})
 
 		-- Set heading highlight groups with distinct colors
