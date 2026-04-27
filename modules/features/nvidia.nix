@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-	flake.nixosModules.nvidia = { config, lib, pkgs, ... }: {
+	flake.nixosModules.nvidia-30 = { config, lib, pkgs, ... }: {
 		hardware.graphics = {
 			enable = true;
 			enable32Bit = true;
@@ -10,7 +10,7 @@
 		hardware.nvidia = {
 			modesetting.enable = true;
 
-			powerManagement.enable = false;
+			powerManagement.enable = true;
 			powerManagement.finegrained = false;
 
 			open = false;
@@ -25,7 +25,7 @@
 		};
 	};
 
-	flake.nixosModules.nvidia-pascal = { config, lib, pkgs, ... }: {
+	flake.nixosModules.nvidia-10 = { config, lib, pkgs, ... }: {
 		hardware.graphics = {
 			enable = true;
 			enable32Bit = true;

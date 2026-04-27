@@ -8,7 +8,7 @@
 			# hardware
 			self.nixosModules.homePcHardware
 			# system programs
-			self.nixosModules.nvidia-pascal
+			self.nixosModules.nvidia-10
 			self.nixosModules.gaming
 			self.nixosModules.ghostty
 			self.nixosModules.niri
@@ -30,7 +30,6 @@
 		networking.networkmanager.plugins = with pkgs; [ networkmanager-openconnect ];
 
 		time.timeZone = "Europe/Vienna";
-
 
 		services.power-profiles-daemon.enable = true;
 		services.upower.enable = true;

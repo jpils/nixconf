@@ -165,7 +165,7 @@
 					# application shortcuts
 					"Mod+W".spawn-sh = zenExe;
 					"Mod+D".spawn-sh = "discord";
-					"Mod+T".spawn-sh = "telegram-desktop";
+					"Mod+T".spawn-sh = lib.getExe pkgs.telegram-desktop;
 					
 					# File Manager
 					"Mod+E".spawn-sh = "nautilus";
@@ -187,6 +187,10 @@
 					{
 						matches = [{ app-id = "^org.telegram.desktop$"; }];
 						default-column-width = { proportion = 0.5; };
+					}
+					{
+						matches = [{ title = "^Test App"; }];
+						open-floating = true;
 					}
 				];
 			};

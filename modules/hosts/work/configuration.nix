@@ -12,7 +12,7 @@
 			self.nixosModules.ghostty
 			self.nixosModules.niri
 			self.nixosModules.neovim
-			self.nixosModules.nvidia
+			self.nixosModules.nvidia-30
 			self.nixosModules.cursor
 			self.nixosModules.tmux
 			self.nixosModules.zsh
@@ -167,6 +167,9 @@
 				"https://cache.nixos.org/"
 				"https://hyprland.cachix.org"
 				"https://nix-community.cachix.org"
+			];
+			trusted-public-keys = [
+				"nix-community.cachix.org-1:mB9FSh9qf2QlZceNZKfO2pFJHbsmQSL3zjPachMmsjI="
 			];
 		};
 	};
