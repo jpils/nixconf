@@ -85,6 +85,16 @@
 					};
 				};
 
+				workspaces = let
+					settings = {layout.gaps = 5;};
+				in {
+				  "0" = settings;
+				  "1" = settings;
+				  "2" = settings;
+				  "3" = settings;
+				  "4" = settings;
+				};
+
 				binds = {
 					"Mod+S".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
 					"Mod+Return".spawn-sh = ghosttyExe;
@@ -120,9 +130,9 @@
 					"Mod+Ctrl+4".move-column-to-workspace = 4;
 					"Mod+Ctrl+5".move-column-to-workspace = 5;
 					
-					# relative workspace navigation
-					"Mod+Shift+J".move-workspace-down = _: {};
-					"Mod+Shift+K".move-workspace-up = _: {};
+					# relative workspace navigation (buggy with noctalia)
+					#"Mod+Shift+J".move-workspace-down = _: {};
+					#"Mod+Shift+K".move-workspace-up = _: {};
 					
 					# view modes
 					"Mod+F".fullscreen-window = _: {};
