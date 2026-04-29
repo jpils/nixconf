@@ -25,7 +25,7 @@
 				ts = "tmux new -s";
 				cd = "z";
 				tn = "tmux-new";
-				leonardo = "source ~/.dotfiles/leonardo.sh";
+				leonardo = "source ~/nixconf/leonardo.sh";
 				univie = "nmcli connection up id 'univie' --ask";
 				fzf-custom = "fzf --multi --height=50% --margin=5%,2%,2%,5% --layout=reverse-list --border=rounded --info=inline --prompt='> ' --pointer='→' --marker='▶' --color='dark,fg:blue'";
 			};
