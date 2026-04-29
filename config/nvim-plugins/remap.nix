@@ -27,8 +27,6 @@
 		--navigate and create tabs
 		vim.keymap.set("n", "<S-h>", "gT")
 		vim.keymap.set("n", "<S-l>", "gt")
-		vim.keymap.set("n", "<leader>tn", ":tabnew")
-		vim.keymap.set("n", "<leader>tm", ":tabmove")
 		--copy paste +clipboard
 		vim.keymap.set("n", "<leader>y", "\"+y")
 		vim.keymap.set("v", "<leader>y", "\"+y")

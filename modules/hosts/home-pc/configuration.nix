@@ -145,6 +145,7 @@
 			pulseaudio
 			qemu
 			ripgrep
+			ripgrep
 			tldr
 			unzip
 			wget

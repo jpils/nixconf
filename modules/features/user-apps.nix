@@ -2,6 +2,7 @@
 
 	flake.nixosModules.user-apps = { pkgs, ... }: {
 	    users.users.jay.packages = with pkgs; [
+			sshfs
 			baobab
 			celluloid
 			discord
@@ -17,8 +18,10 @@
 			mpv
 			nautilus
 			spotify
+			step-cli
 			sushi
 			telegram-desktop
+			tree
 			vlc
 			xournalpp
 

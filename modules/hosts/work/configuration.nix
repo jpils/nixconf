@@ -136,6 +136,7 @@
 			keyd
 			pavucontrol
 			pulseaudio
+			ripgrep
 			qemu
 			tldr
 			unzip

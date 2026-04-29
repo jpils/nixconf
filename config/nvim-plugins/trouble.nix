@@ -6,32 +6,38 @@
 	];
 
 	lua = /* lua */ ''
+		vim.opt.swapfile = false
+		vim.opt.backup = false
+		vim.opt.writebackup = false
+
 		require("trouble").setup({
-			icons = false,
-		})
+				icons = { enabled = false },
+				})
+
+		vim.keymap.set("n", "<leader>tr", "<cmd>Trouble diagnostics toggle<cr>")
 
 		vim.keymap.set("n", "<leader>tt", function()
-			require("trouble").toggle()
-		end)
+				require("trouble").toggle("diagnostics")
+				end)
 
-		vim.keymap.set("n", "[t", function()
-			require("trouble").next({skip_groups = true, jump = true});
-		end)
+		-- Navigation (Teleporting)
+		vim.keymap.set("n", "<leader>tp", function()
+				require("trouble").prev({ skip_groups = true, jump = true })
+				end)
 
-		vim.keymap.set("n", "]t", function()
-			require("trouble").previous({skip_groups = true, jump = true});
-		end)
+		vim.keymap.set("n", "<leader>tn", function()
+				require("trouble").next({ skip_groups = true, jump = true })
+				end)
 
-		local actions = require("telescope.actions")
-		local trouble = require("trouble.sources.telescope")
-
+		-- Telescope Integration
 		local telescope = require("telescope")
+		local trouble = require("trouble.sources.telescope")
 
 		telescope.setup {
 			defaults = {
 				mappings = {
-					i = { ["<c-t>"] = trouble.open_with_trouble },
-					n = { ["<c-t>"] = trouble.open_with_trouble },
+					i = { ["<c-t>"] = trouble.open },
+					n = { ["<c-t>"] = trouble.open },
 				},
 			},
 		}
