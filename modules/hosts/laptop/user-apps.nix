@@ -2,12 +2,12 @@
 
 	flake.nixosModules.user-apps = { pkgs, ... }: {
 	    users.users.jay.packages = with pkgs; [
-			sshfs
 			baobab
 			celluloid
 			discord
 			evince
 			file-roller
+			geary
 			geary              
 			gnome-calculator
 			gnome-calendar    
@@ -16,12 +16,10 @@
 			mission-center
 			mpv
 			nautilus
-			networkmanagerapplet
+			networkmanager
 			spotify
-			step-cli
 			sushi
 			telegram-desktop
-			tree
 			vlc
 			xournalpp
 
