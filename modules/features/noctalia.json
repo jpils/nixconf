@@ -140,7 +140,7 @@
       "screenOverrides": []
     },
     "general": {
-      "avatarImage": "/home/jay/.dotfiles/Wallpapers/mandelbrot.png",
+      "avatarImage": "/home/jay/nixconf/Wallpapers/mandelbrot.png",
       "dimmerOpacity": 0.2,
       "showScreenCorners": false,
       "forceBlackScreenCorners": false,
@@ -648,7 +648,7 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "eDP-1": "/home/jay/.dotfiles/Wallpapers/mandelbrot.png"
+      "eDP-1": "/home/jay/nixconf/Wallpapers/mandelbrot.png"
     },
     "desktopWidgetsEditMode": false,
     "display": {

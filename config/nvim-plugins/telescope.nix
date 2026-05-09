@@ -5,7 +5,7 @@
 		fd
 		vimPlugins.telescope-nvim
 		vimPlugins.telescope-ui-select-nvim
-		
+		ripgrep		
 	];
 
 	lua = /* lua */ ''

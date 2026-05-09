@@ -157,10 +157,10 @@
 			jujutsu
 			keyd
 			pavucontrol
-			#pulseaudio
 			qemu
 			tldr
 			unzip
+			ripgrep
 			wget
 			custom-elegant-sddm
 		];
