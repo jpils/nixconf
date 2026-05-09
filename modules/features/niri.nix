@@ -121,14 +121,12 @@
 					"Mod+2".focus-workspace = 2;
 					"Mod+3".focus-workspace = 3;
 					"Mod+4".focus-workspace = 4;
-					"Mod+5".focus-workspace = 5;
 					
 					# move window to workspace
 					"Mod+Ctrl+1".move-column-to-workspace = 1;
 					"Mod+Ctrl+2".move-column-to-workspace = 2;
 					"Mod+Ctrl+3".move-column-to-workspace = 3;
 					"Mod+Ctrl+4".move-column-to-workspace = 4;
-					"Mod+Ctrl+5".move-column-to-workspace = 5;
 					
 					# relative workspace navigation (buggy with noctalia)
 					#"Mod+Shift+J".move-workspace-down = _: {};

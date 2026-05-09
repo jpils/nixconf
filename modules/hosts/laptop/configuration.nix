@@ -99,17 +99,30 @@
 		services.xserver = { xkb.layout = "us"; xkb.variant = "dvorak"; };
 		console.useXkbConfig = true;
 
+		hardware.pulseaudio.enable = false;
 		security.rtkit.enable = true;
 		services.pipewire = {
 			enable = true;
 			alsa.enable = true;
 			alsa.support32Bit = true;
 			pulse.enable = true;
-			jack.enable = true;
 		};
 
-		hardware.bluetooth.enable = true;
-		hardware.bluetooth.powerOnBoot = false;
+		hardware.bluetooth = {
+			enable = true;
+			powerOnBoot = false;
+			settings = {
+				General = {
+					Experimental = true;
+					FastConnectable = true;
+				};
+				Policy = {
+					AutoEnable = true;
+				};
+			};
+		};
+		services.blueman.enable = true;
+		hardware.enableAllFirmware = true;
 
 		systemd.user.services.mpris-proxy = {
 			description = "Mpris proxy";
@@ -144,7 +157,7 @@
 			jujutsu
 			keyd
 			pavucontrol
-			pulseaudio
+			#pulseaudio
 			qemu
 			tldr
 			unzip
