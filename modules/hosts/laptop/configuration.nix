@@ -13,7 +13,8 @@
 			self.nixosModules.neovim
 			self.nixosModules.cursor
 			self.nixosModules.tmux
-			self.nixosModules.zsh
+			#self.nixosModules.zsh
+			self.nixosModules.nushell
 			self.nixosModules.gnome-integration
 
 			# user programs

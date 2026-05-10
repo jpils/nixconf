@@ -20,7 +20,7 @@
 					"Iosevka"
 					"Noto Color Emoji"
 				];
-				
+
 				# Use the explicit aliases from your theme!
 				"--background" = self.themeNoHash.bg;
 				"--foreground" = self.themeNoHash.fg;
