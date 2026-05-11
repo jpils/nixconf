@@ -88,7 +88,6 @@
 				workspaces = let
 					settings = {layout.gaps = 5;};
 				in {
-				  "0" = settings;
 				  "1" = settings;
 				  "2" = settings;
 				  "3" = settings;
@@ -123,10 +122,10 @@
 					"Mod+4".focus-workspace = 4;
 					
 					# move window to workspace
-					"Mod+Ctrl+1".move-column-to-workspace = 1;
-					"Mod+Ctrl+2".move-column-to-workspace = 2;
-					"Mod+Ctrl+3".move-column-to-workspace = 3;
-					"Mod+Ctrl+4".move-column-to-workspace = 4;
+					"Mod+Shift+1".move-column-to-workspace = 1;
+					"Mod+Shift+2".move-column-to-workspace = 2;
+					"Mod+Shift+3".move-column-to-workspace = 3;
+					"Mod+Shift+4".move-column-to-workspace = 4;
 					
 					# relative workspace navigation (buggy with noctalia)
 					#"Mod+Shift+J".move-workspace-down = _: {};
