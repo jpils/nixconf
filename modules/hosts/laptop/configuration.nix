@@ -12,7 +12,7 @@
 			self.nixosModules.niri
 			self.nixosModules.neovim
 			self.nixosModules.cursor
-			self.nixosModules.tmux
+			self.nixosModules.tmux-nu
 			#self.nixosModules.zsh
 			self.nixosModules.nushell
 			self.nixosModules.gnome-integration
