@@ -104,15 +104,6 @@
           ]
         )
 
-        # --- ALIASES ---
-		alias cd = z
-		alias fg = job unfreeze
-        alias v = nvim
-        alias l = ls
-        alias la = ls -l
-        alias ts = tmux new -s
-		alias fg = job unfreeze
-
         # --- PROMPT (Starship) ---
         $env.STARSHIP_SHELL = "nu"
         def create_left_prompt [] {
@@ -138,6 +129,24 @@
             $env.PATH = ($env.PATH | split row (char env_sep) | path expand --no-symlink)
           }
         }]
+
+		# --- FUNCTIONS ---
+		def tmux-new [] {
+			let session = (sesh list | fzf ${fzf_style})
+			if not ($session | is-empty) {
+				sesh connect $session
+			}
+		}
+
+		# --- ALIASES ---
+		alias cd = z
+		alias fg = job unfreeze
+		alias v = nvim
+		alias l = ls
+		alias la = ls -l
+		alias ts = tmux new -s
+		alias tn = tmux-new
+		alias fg = job unfreeze
       '';
     };
   };
