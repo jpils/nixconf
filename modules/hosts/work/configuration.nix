@@ -7,15 +7,14 @@
 		imports = [
 			# hardware
 			self.nixosModules.workstationHardware
-			
 			# system programs
 			self.nixosModules.ghostty
 			self.nixosModules.niri
 			self.nixosModules.neovim
 			self.nixosModules.nvidia-30
 			self.nixosModules.cursor
-			self.nixosModules.tmux
-			self.nixosModules.zsh
+			self.nixosModules.tmux-nu
+			self.nixosModules.nushell
 			self.nixosModules.gnome-integration
 
 			# user programs
