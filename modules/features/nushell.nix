@@ -8,6 +8,11 @@
         exec ${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.nushell}
       fi
     '';
+
+	programs.direnv = {
+		enable = true;
+		nix-direnv.enable = true;
+	};
   };
 
   perSystem = { pkgs, ... }: let
