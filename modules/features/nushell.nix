@@ -148,7 +148,9 @@
 		alias fg = job unfreeze
 		alias v = nvim
 		alias l = ls
-		alias la = ls -l
+		alias ll = ls -l
+		alias la = ls -a
+		alias lla = ls -la
 		alias ts = tmux new -s
 		alias tn = tmux-new
 		alias fg = job unfreeze
