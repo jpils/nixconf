@@ -226,7 +226,7 @@
 					}
 					{
 						matches = [{ app-id = "^zen$"; }];
-						default-column-width = { proportion = 0.7; };
+						default-column-width = { proportion = 0.666; };
 					}
 					{
 						matches = [{ app-id = "^vesktop$"; }];
@@ -235,11 +235,11 @@
 					}
 					{
 						matches = [{ title = "^Ovito"; }];
-						default-column-width = { proportion = 0.7; };
+						default-column-width = { proportion = 0.666; };
 					}
 					{
 						matches = [{ app-id = "^geary$"; }];
-						default-column-width = { proportion = 0.7; };
+						default-column-width = { proportion = 0.666; };
 						open-on-workspace = "3";
 					}
 					{
