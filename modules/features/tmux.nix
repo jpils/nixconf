@@ -150,7 +150,7 @@ PERL
 
 # Core Settings
 				set -g default-shell ${shellPath}
-				set -g mouse on
+				set -g mouse off
 				set -g base-index 1
 				set -g pane-base-index 1
 				set-window-option -g pane-base-index 1
