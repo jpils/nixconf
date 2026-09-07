@@ -150,7 +150,7 @@ PERL
 
 # Core Settings
 				set -g default-shell ${shellPath}
-				set -g mouse off
+				set -g mouse on
 				set -g base-index 1
 				set -g pane-base-index 1
 				set-window-option -g pane-base-index 1
@@ -190,6 +190,7 @@ PERL
 
 			configAfter = ''
 				bind-key x kill-pane
+				bind m if -F '#{==:#{mouse},on}' 'set -g mouse off; display-message "mouse off: Ghostty Ctrl-click links work"' 'set -g mouse on; display-message "mouse on: tmux mouse active"'
 				set -g detach-on-destroy off
 				set -g history-limit 100000
 				set -sg escape-time 10
