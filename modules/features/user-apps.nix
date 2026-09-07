@@ -6,6 +6,8 @@
 			exit 0
 		'';
 
+		scdaemonConf = pkgs.writeText "scdaemon.conf" "disable-ccid\n";
+
 		zathurarc = pkgs.writeText "zathurarc" ''
 			set default-bg "${self.theme.bg}"
 			set default-fg "${self.theme.fg}"
@@ -30,7 +32,10 @@
 			set recolor-darkcolor "${self.theme.fg}"
 		'';
 	in {
-		services.pcscd.enable = true;
+		services.pcscd = {
+			enable = true;
+			plugins = [ pkgs.ccid ];
+		};
 
 		programs.ssh.askPassword = "${ssh-askpass-notify}/bin/ssh-askpass-notify";
 
@@ -84,6 +89,11 @@
 		system.activationScripts.zathura-config.text = ''
 			install -d -m 700 -o jay -g users /home/jay/.config/zathura
 			install -m 600 -o jay -g users ${zathurarc} /home/jay/.config/zathura/zathurarc
+		'';
+
+		system.activationScripts.gnupg-scdaemon-conf.text = ''
+			install -d -m 700 -o jay -g users /home/jay/.gnupg
+			install -m 600 -o jay -g users ${scdaemonConf} /home/jay/.gnupg/scdaemon.conf
 		'';
 
 	    users.users.jay.packages = with pkgs; [
