@@ -40,6 +40,16 @@
 				zenExe = lib.getExe inputs.zen-browser.packages.${pkgs.system}.default;
 				ghosttyExe = lib.getExe selfPkgs.ghostty;
 				niriExe = lib.getExe pkgs.niri;
+				hdmiMirrorExe = lib.getExe (pkgs.writeShellScriptBin "hdmi-mirror" ''
+					set -eu
+
+					if ${pkgs.procps}/bin/pgrep -x wl-mirror >/dev/null 2>&1; then
+						${pkgs.procps}/bin/pkill -x wl-mirror
+						exit 0
+					fi
+
+					exec ${lib.getExe pkgs.wl-mirror} --fullscreen-output A-1 eDP-1
+				'');
 				outputKey = config.outputMonitorName;
 				noctaliaBarEmptyWorkspace = pkgs.writeShellScriptBin "noctalia-bar-empty-workspace" ''
 					set -eu
@@ -211,6 +221,7 @@
 					"Mod+W".spawn-sh = zenExe;
 					"Mod+D".spawn-sh = "vesktop";
 					"Mod+T".spawn-sh = lib.getExe pkgs.telegram-desktop;
+					"Mod+M".spawn = hdmiMirrorExe;
 					
 					"Mod+E".spawn-sh = "nautilus";
 					"Mod+S".spawn-sh = "${noctaliaExe} msg panel-toggle launcher";
