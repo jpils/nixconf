@@ -269,6 +269,16 @@
 						open-floating = true;
 					}
 					{
+						matches = [{ app-id = "^org.gnome.Calculator$"; }];
+						open-floating = true;
+					}
+					{
+						matches = [{ app-id = "^com.yubico.yubioath$"; }];
+						open-floating = true;
+						default-column-width = { proportion = 0.333; };
+						default-window-height = { proportion = 0.5; };
+					}
+					{
 						matches = [{ app-id = "^nm-openconnect-auth-dialog"; }];
 						open-floating = true;
 					}
