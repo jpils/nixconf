@@ -255,7 +255,7 @@
 					}
 					{
 						matches = [{ app-id = "^org.telegram.desktop$"; }];
-						default-column-width = { proportion = 0.5; };
+						default-column-width = { proportion = 0.3333; };
 						open-on-workspace = "3";
 					}
 					{
