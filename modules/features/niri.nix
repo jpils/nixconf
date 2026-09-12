@@ -177,6 +177,7 @@
 					"Mod+F".toggle-window-floating = _: {};
 					"Mod+Shift+F".fullscreen-window = _: {};
 					"Mod+Shift+C".center-column = _: {};
+					"Mod+Space".switch-focus-between-floating-and-tiling = _: {};
 					
 					# window size presets
 					"Mod+7".set-column-width = "33.3%";
