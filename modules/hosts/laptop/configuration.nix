@@ -232,6 +232,13 @@
 
 		services.openssh = {
 			enable = true;
+			settings = {
+				PasswordAuthentication = false;
+				KbdInteractiveAuthentication = false;
+				PermitRootLogin = "no";
+				X11Forwarding = false;
+				AllowTcpForwarding = false;
+			};
 			extraConfig = ''
 			UseDNS no
 			'';
