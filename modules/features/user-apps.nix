@@ -8,6 +8,26 @@
 
 		scdaemonConf = pkgs.writeText "scdaemon.conf" "disable-ccid\n";
 
+		mimeapps = pkgs.writeText "mimeapps.list" ''
+			[Default Applications]
+			application/pdf=org.pwmt.zathura.desktop
+			image/avif=org.gnome.Loupe.desktop
+			image/bmp=org.gnome.Loupe.desktop
+			image/gif=org.gnome.Loupe.desktop
+			image/jpeg=org.gnome.Loupe.desktop
+			image/png=org.gnome.Loupe.desktop
+			image/svg+xml=org.gnome.Loupe.desktop
+			image/tiff=org.gnome.Loupe.desktop
+			image/webp=org.gnome.Loupe.desktop
+			text/plain=org.gnome.TextEditor.desktop
+			video/mp4=mpv.desktop
+			video/mpeg=mpv.desktop
+			video/quicktime=mpv.desktop
+			video/x-matroska=mpv.desktop
+			video/x-msvideo=mpv.desktop
+			inode/directory=org.gnome.Nautilus.desktop
+		'';
+
 		zathurarc = pkgs.writeText "zathurarc" ''
 			set default-bg "${self.theme.bg}"
 			set default-fg "${self.theme.fg}"
@@ -32,6 +52,8 @@
 			set recolor-darkcolor "${self.theme.fg}"
 		'';
 	in {
+		xdg.mime.enable = true;
+
 		services.pcscd = {
 			enable = true;
 			plugins = [ pkgs.ccid ];
@@ -89,6 +111,11 @@
 		system.activationScripts.zathura-config.text = ''
 			install -d -m 700 -o jay -g users /home/jay/.config/zathura
 			install -m 600 -o jay -g users ${zathurarc} /home/jay/.config/zathura/zathurarc
+		'';
+
+		system.activationScripts.mimeapps.text = ''
+			install -d -m 700 -o jay -g users /home/jay/.config
+			install -m 600 -o jay -g users ${mimeapps} /home/jay/.config/mimeapps.list
 		'';
 
 		system.activationScripts.gnupg-scdaemon-conf.text = ''
