@@ -186,7 +186,7 @@
 		users.users.jay = {
 			hashedPasswordFile = config.sops.secrets.jay-password.path;
 			isNormalUser = true; 
-			extraGroups = [ "wheel" "networkmanager" "docker" "input" "audio" ];
+			extraGroups = [ "wheel" "networkmanager" "input" "audio" ];
 			shell = pkgs.zsh;
 		};
 
