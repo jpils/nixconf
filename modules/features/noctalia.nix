@@ -211,12 +211,6 @@ in {
 		};
 	in {
 		options.programs.noctalia = {
-			enable = lib.mkOption {
-				type = lib.types.bool;
-				default = true;
-				description = "Install wrapped Noctalia v5 with packaged declarative config.";
-			};
-
 			basePackage = lib.mkOption {
 				type = lib.types.package;
 				default = inputs.noctalia-v5.packages.${pkgs.stdenv.hostPlatform.system}.default;
@@ -275,27 +269,24 @@ in {
 					description = "Manual bar.SystemMonitor.margin_ends override. If set, disables auto percent/minWidth calculation.";
 				};
 			};
-
-			package = lib.mkOption {
-				type = lib.types.package;
-				readOnly = true;
-				description = "Final wrapped Noctalia package.";
-			};
 		};
 
-		config = lib.mkIf cfg.enable {
-			programs.noctalia.package = wrappedPackage;
-			environment.systemPackages = [ cfg.package ];
+		config = lib.mkMerge [
+			{ programs.noctalia.enable = lib.mkDefault true; }
 
-			system.activationScripts.noctalia-config.text = lib.mkIf cfg.clearGuiOverrides ''
-				# GUI overrides live here and win over packaged config.toml.
-				# Remove them so the wrapped Noctalia package is authoritative.
-				rm -f /home/jay/.local/state/noctalia/settings.toml
+			(lib.mkIf cfg.enable {
+				programs.noctalia.package = wrappedPackage;
 
-				# Disable/remove Noctalia clipboard history state.
-				rm -rf /home/jay/.local/state/noctalia/clipboard
-			'';
-		};
+				system.activationScripts.noctalia-config.text = lib.mkIf cfg.clearGuiOverrides ''
+					# GUI overrides live here and win over packaged config.toml.
+					# Remove them so the wrapped Noctalia package is authoritative.
+					rm -f /home/jay/.local/state/noctalia/settings.toml
+
+					# Disable/remove Noctalia clipboard history state.
+					rm -rf /home/jay/.local/state/noctalia/clipboard
+				'';
+			})
+		];
 	};
 
 	perSystem = { pkgs, ... }: let
