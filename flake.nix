@@ -7,6 +7,11 @@
 
 		wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 
+		neovim-nightly = {
+			url = "github:nix-community/neovim-nightly-overlay";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		noctalia-v5 = {
 			url = "github:noctalia-dev/noctalia/v5.0.0-beta2";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +29,11 @@
 			url = "github:youwen5/zen-browser-flake";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+	};
+
+	nixConfig = {
+		extra-substituters = [ "https://nix-community.cachix.org" ];
+		extra-trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
 	};
 
 	outputs = inputs: inputs.flake-parts.lib.mkFlake 

@@ -47,6 +47,7 @@
 		in {
 			packages.neovim = inputs.wrapper-modules.wrappers.neovim.wrap {
 				inherit pkgs;
+				package = inputs.neovim-nightly.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
 				specs.allPlugins = mergedConfig.plugins;
 				runtimePkgs = mergedConfig.runtimePkgs;
 				settings.config_directory = pkgs.writeTextDir "init.lua" mergedConfig.lua;
