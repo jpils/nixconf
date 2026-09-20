@@ -16,6 +16,11 @@
 				default = "";
 				description = "Keyboard model for Niri";
 			};
+			modKey = lib.mkOption {
+				type = lib.types.str;
+				default = "";
+				description = "Niri Mod key";
+			};
 			outputMonitorName = lib.mkOption {
 				type = lib.types.str;
 				default = "*";
@@ -56,10 +61,7 @@
 					exec ${lib.getExe pkgs.wl-mirror} --fullscreen-output A-1 eDP-1
 				'');
 				outputKey = config.outputMonitorName;
-				bindKey = key: if config.keyboardLayout == "graphite" then {
-					C = "M"; D = "T"; E = "D"; F = "S"; H = "Y"; J = "H"; K = "A"; L = "E";
-					M = "P"; S = "R"; T = "Z"; W = "L";
-				}.${key} or key else key;
+				bindKey = key: key;
 				mod = key: "Mod+${bindKey key}";
 				modCtrl = key: "Mod+Ctrl+${bindKey key}";
 				modShift = key: "Mod+Shift+${bindKey key}";
@@ -117,6 +119,9 @@
 				};
 
 				input = {
+				} // lib.optionalAttrs (config.modKey != "") {
+					"mod-key" = config.modKey;
+				} // {
 					keyboard = {
 						xkb = {
 							layout = config.keyboardLayout;
@@ -338,6 +343,11 @@
 				default = "";
 				description = "Keyboard model for Niri";
 			};
+			modKey = lib.mkOption {
+				type = lib.types.str;
+				default = "";
+				description = "Niri Mod key";
+			};
 			outputMonitorName = lib.mkOption {
 				type = lib.types.str;
 				default = "*";
@@ -364,6 +374,7 @@
 					keyboardLayout = cfg.keyboardLayout;
 					keyboardVariant = cfg.keyboardVariant;
 					keyboardModel = cfg.keyboardModel;
+					modKey = cfg.modKey;
 					outputMonitorName = cfg.outputMonitorName;
 					outputMode = cfg.outputMode;
 					outputScaling = cfg.outputScaling;

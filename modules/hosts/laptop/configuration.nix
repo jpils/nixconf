@@ -162,6 +162,7 @@
 			keyboardLayout     = "graphite";
 			keyboardVariant    = "";
 			keyboardModel      = "pc105";
+			modKey             = "Alt";
 		};
 		programs.noctalia.systemMonitorBar.widthPercent = 30;
 
@@ -180,6 +181,7 @@
 						};
 						main = {
 							capslock = "overload(control, esc)";
+							rightalt = "leftalt";
 						};
 					};
 				};
