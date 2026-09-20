@@ -56,6 +56,13 @@
 					exec ${lib.getExe pkgs.wl-mirror} --fullscreen-output A-1 eDP-1
 				'');
 				outputKey = config.outputMonitorName;
+				bindKey = key: if config.keyboardLayout == "graphite" then {
+					C = "M"; D = "T"; E = "D"; F = "S"; H = "Y"; J = "H"; K = "A"; L = "E";
+					M = "P"; S = "R"; T = "Z"; W = "L";
+				}.${key} or key else key;
+				mod = key: "Mod+${bindKey key}";
+				modCtrl = key: "Mod+Ctrl+${bindKey key}";
+				modShift = key: "Mod+Shift+${bindKey key}";
 				noctaliaBarEmptyWorkspace = pkgs.writeShellScriptBin "noctalia-bar-empty-workspace" ''
 					set -eu
 
@@ -152,23 +159,23 @@
 
 				binds = {
 					"Mod+Return".spawn-sh = ghosttyExe;
-					"Mod+C".close-window = _: {};
+					${mod "C"}.close-window = _: {};
 					
 					# focus windows
-					"Mod+H".focus-column-left = _: {};
-					"Mod+L".focus-column-right = _: {};
-					"Mod+K".focus-window-up = _: {};
-					"Mod+J".focus-window-down = _: {};
+					${mod "H"}.focus-column-left = _: {};
+					${mod "L"}.focus-column-right = _: {};
+					${mod "K"}.focus-window-up = _: {};
+					${mod "J"}.focus-window-down = _: {};
 					
 					# move windows
-					"Mod+Ctrl+H".move-column-left = _: {};
-					"Mod+Ctrl+L".move-column-right = _: {};
-					"Mod+Ctrl+K".move-window-up = _: {};
-					"Mod+Ctrl+J".move-window-down = _: {};
+					${modCtrl "H"}.move-column-left = _: {};
+					${modCtrl "L"}.move-column-right = _: {};
+					${modCtrl "K"}.move-window-up = _: {};
+					${modCtrl "J"}.move-window-down = _: {};
 					
 					# consume / expel
-					"Mod+Shift+L".consume-or-expel-window-left = _: {};
-					"Mod+Shift+H".consume-or-expel-window-right = _: {};
+					${modShift "L"}.consume-or-expel-window-left = _: {};
+					${modShift "H"}.consume-or-expel-window-right = _: {};
 					
 					# workspaces
 					"Mod+1".focus-workspace = 1;
@@ -183,9 +190,9 @@
 					"Mod+Shift+4".move-column-to-workspace = 4;
 					
 					# view modes
-					"Mod+F".toggle-window-floating = _: {};
-					"Mod+Shift+F".fullscreen-window = _: {};
-					"Mod+Shift+C".center-column = _: {};
+					${mod "F"}.toggle-window-floating = _: {};
+					${modShift "F"}.fullscreen-window = _: {};
+					${modShift "C"}.center-column = _: {};
 					"Mod+Space".switch-focus-between-floating-and-tiling = _: {};
 					
 					# window size presets
@@ -228,16 +235,16 @@
 					};
 
 					# application shortcuts
-					"Mod+W".spawn-sh = zenExe;
-					"Mod+D".spawn-sh = "vesktop";
-					"Mod+T".spawn-sh = lib.getExe pkgs.telegram-desktop;
-					"Mod+M".spawn = hdmiMirrorExe;
+					${mod "W"}.spawn-sh = zenExe;
+					${mod "D"}.spawn-sh = "vesktop";
+					${mod "T"}.spawn-sh = lib.getExe pkgs.telegram-desktop;
+					${mod "M"}.spawn = hdmiMirrorExe;
 					
-					"Mod+E".spawn-sh = "nautilus";
-					"Mod+S".spawn-sh = "${noctaliaExe} msg panel-toggle launcher";
+					${mod "E"}.spawn-sh = "nautilus";
+					${mod "S"}.spawn-sh = "${noctaliaExe} msg panel-toggle launcher";
 
 					# lock screen
-					"Mod+Ctrl+C".spawn = "swaylock";
+					${modCtrl "C"}.spawn = "swaylock";
 				};
 
 				window-rules = [
