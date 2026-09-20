@@ -1,5 +1,53 @@
 {self, inputs, ...}: {
 	flake.nixosModules.laptopConfiguration = { config, lib, pkgs, inputs, ... }: let
+		graphiteXkbSymbols = pkgs.writeText "graphite-xkb-symbols" ''
+			default partial alphanumeric_keys
+			xkb_symbols "basic" {
+				include "us(basic)"
+				name[Group1]= "Graphite";
+
+				key <AE11> { [ bracketleft, braceleft ] };
+				key <AE12> { [ bracketright, braceright ] };
+
+				key <AD01> { [ b, B ] };
+				key <AD02> { [ l, L ] };
+				key <AD03> { [ d, D ] };
+				key <AD04> { [ w, W ] };
+				key <AD05> { [ z, Z ] };
+				key <AD06> { [ apostrophe, underscore ] };
+				key <AD07> { [ f, F ] };
+				key <AD08> { [ o, O ] };
+				key <AD09> { [ u, U ] };
+				key <AD10> { [ j, J ] };
+				key <AD11> { [ semicolon, colon ] };
+				key <AD12> { [ equal, plus ] };
+				key <BKSL> { [ backslash, bar ] };
+				key <LSGT> { [ less, greater, bar ] };
+
+				key <AC01> { [ n, N ] };
+				key <AC02> { [ r, R ] };
+				key <AC03> { [ t, T ] };
+				key <AC04> { [ s, S ] };
+				key <AC05> { [ g, G ] };
+				key <AC06> { [ y, Y ] };
+				key <AC07> { [ h, H ] };
+				key <AC08> { [ a, A ] };
+				key <AC09> { [ e, E ] };
+				key <AC10> { [ i, I ] };
+				key <AC11> { [ comma, question ] };
+
+				key <AB01> { [ q, Q ] };
+				key <AB02> { [ x, X ] };
+				key <AB03> { [ m, M ] };
+				key <AB04> { [ c, C ] };
+				key <AB05> { [ v, V ] };
+				key <AB06> { [ k, K ] };
+				key <AB07> { [ p, P ] };
+				key <AB08> { [ period, greater ] };
+				key <AB09> { [ minus, quotedbl ] };
+				key <AB10> { [ slash, less ] };
+			};
+		'';
 		sddm-blurred-wallpaper = pkgs.runCommand "sddm-blurred-wallpaper.png" { nativeBuildInputs = [ pkgs.imagemagick ]; } ''
 			magick ${self.wallpaper} -blur 0x7 -blur 0x7 -blur 0x7 $out
 		'';
@@ -111,7 +159,9 @@
 			outputMonitorName = "eDP-1";        # or "AU Optronics 0xD291 Unknown"
 			outputMode        = "1920x1200@60.026";
 			outputScaling     = 1.0;
-			keyboardVariant   = "dvorak";
+			keyboardLayout     = "graphite";
+			keyboardVariant    = "";
+			keyboardModel      = "pc105";
 		};
 		programs.noctalia.systemMonitorBar.widthPercent = 30;
 
@@ -151,7 +201,16 @@
 			openFirewall = true;
 		};
 
-		services.xserver = { xkb.layout = "us"; xkb.variant = "dvorak"; };
+		services.xserver.xkb = {
+			layout = "graphite";
+			variant = "";
+			model = "pc105";
+			extraLayouts.graphite = {
+				description = "Graphite";
+				languages = [ "eng" ];
+				symbolsFile = graphiteXkbSymbols;
+			};
+		};
 		console.useXkbConfig = true;
 
 		hardware.pulseaudio.enable = false;

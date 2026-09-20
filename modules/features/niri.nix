@@ -11,6 +11,11 @@
 				default = "";
 				description = "Keyboard variant for Niri";
 			};
+			keyboardModel = lib.mkOption {
+				type = lib.types.str;
+				default = "";
+				description = "Keyboard model for Niri";
+			};
 			outputMonitorName = lib.mkOption {
 				type = lib.types.str;
 				default = "*";
@@ -106,8 +111,12 @@
 
 				input = {
 					keyboard = {
-						xkb.layout = config.keyboardLayout;
-						xkb.variant = config.keyboardVariant;
+						xkb = {
+							layout = config.keyboardLayout;
+							variant = config.keyboardVariant;
+						} // lib.optionalAttrs (config.keyboardModel != "") {
+							model = config.keyboardModel;
+						};
 					};
 					touchpad = {
 						tap = _: {};              
@@ -317,6 +326,11 @@
 				default = "";
 				description = "Keyboard variant for Niri";
 			};
+			keyboardModel = lib.mkOption {
+				type = lib.types.str;
+				default = "";
+				description = "Keyboard model for Niri";
+			};
 			outputMonitorName = lib.mkOption {
 				type = lib.types.str;
 				default = "*";
@@ -342,6 +356,7 @@
 					imports = [ self.wrappersModules.niri ];
 					keyboardLayout = cfg.keyboardLayout;
 					keyboardVariant = cfg.keyboardVariant;
+					keyboardModel = cfg.keyboardModel;
 					outputMonitorName = cfg.outputMonitorName;
 					outputMode = cfg.outputMode;
 					outputScaling = cfg.outputScaling;
