@@ -50,10 +50,6 @@
 			];
 		};
 
-		environment.sessionVariables = {
-			MANGOHUD = "1";
-		};
-
 		# --- Controllers ----------------------------------------------------
 		hardware.xpadneo.enable = true;
 		hardware.xone.enable = true;
@@ -91,9 +87,7 @@
 			protontricks
 			protonup-qt
 
-			# Performance / overlays / tweaking
-			mangohud
-			#goverlay
+			# Performance / tweaking
 			gamescope
 			gamemode
 		];

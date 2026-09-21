@@ -93,8 +93,7 @@
             protontricks
             protonup-qt
 
-            # Performance / overlays / tweaking
-            mangohud
+            # Performance / tweaking
             gamescope
             gamemode
         ];

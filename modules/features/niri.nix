@@ -281,7 +281,8 @@
 						open-on-workspace = "3";
 					}
 					{
-						matches = [{ app-id = "(?i)spotify"; }]; 
+						matches = [{ app-id = "(?i)spotify"; }];
+						default-column-width = { proportion = 0.3333; };
 						open-on-workspace = "3";
 					}
 					{
