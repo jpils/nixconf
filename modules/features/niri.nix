@@ -58,7 +58,17 @@
 						exit 0
 					fi
 
-					exec ${lib.getExe pkgs.wl-mirror} --fullscreen-output A-1 eDP-1
+					target="$(${niriExe} msg outputs | ${pkgs.gawk}/bin/awk -F'[()]' '/^Output / { if ($2 != "eDP-1") { print $2; exit } }')"
+					if [ -z "$target" ]; then
+						echo "hdmi-mirror: no external output found" >&2
+						exit 1
+					fi
+
+					${lib.getExe pkgs.wl-mirror} --fullscreen-output "$target" eDP-1 &
+					mirror_pid=$!
+					sleep 0.2
+					${niriExe} msg action focus-monitor eDP-1 >/dev/null 2>&1 || true
+					wait "$mirror_pid"
 				'');
 				outputKey = config.outputMonitorName;
 				bindKey = key: key;
